@@ -1,9 +1,5 @@
 # Learning to Ask: When LLM Agents Meet Unclear Instruction
 
-<div>
-[![arXiv](https://img.shields.io/badge/arXiv%20paper-2401.00763-b31b1b.svg)](https://arxiv.org/abs/2409.00557)&nbsp;
-</div>
-
 <p align="center" style="font-size: larger;">
   <a href="https://arxiv.org/abs/2409.00557">Learning to Ask: When LLM Agents Meet Unclear Instruction</a>
 </p>
