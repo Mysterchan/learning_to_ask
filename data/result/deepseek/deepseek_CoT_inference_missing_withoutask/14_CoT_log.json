@@ -1,0 +1,70 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.trackingmore_v2: All-in-one global package tracking tool. Support track and trace international 472 couriers.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nCan you provide me with the carrier details of my package?\nBegin!\n"
+  },
+  {
+    "content": "To provide you with the carrier details of your package, I need the tracking number of your package. Could you please provide the tracking number?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "'NY323068998GB' is my tracking number"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_1b65e2d5-44de-4a11-acd6-d7e25cd6371a",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}",
+    "tool_call_id": "call_0_1b65e2d5-44de-4a11-acd6-d7e25cd6371a"
+  },
+  {
+    "content": "\u6211\u73b0\u5728\u77e5\u9053\u4f60\u7684\u5305\u88f9\u7684\u627f\u8fd0\u5546\u4fe1\u606f\u4e86\u3002\u4ee5\u4e0b\u662f\u8be6\u7ec6\u4fe1\u606f\uff1a\n\n- **\u627f\u8fd0\u5546\u540d\u79f0**: Royal Mail\n- **\u627f\u8fd0\u5546\u4ee3\u7801**: royal-mail\n\n- **\u627f\u8fd0\u5546\u540d\u79f0**: UBI\n- **\u627f\u8fd0\u5546\u4ee3\u7801**: ubi-logistics\n\n\u5982\u679c\u4f60\u9700\u8981\u8fdb\u4e00\u6b65\u7684\u8ddf\u8e2a\u4fe1\u606f\uff0c\u8bf7\u544a\u8bc9\u6211\uff01",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_24c7009d-c391-4f0c-82b8-c832b375b5ac",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The carrier details for your package with tracking number NY323068998GB are:\\n- Carrier Name: Royal Mail, Carrier Code: royal-mail\\n- Carrier Name: UBI, Carrier Code: ubi-logistics\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_24c7009d-c391-4f0c-82b8-c832b375b5ac"
+  }
+]

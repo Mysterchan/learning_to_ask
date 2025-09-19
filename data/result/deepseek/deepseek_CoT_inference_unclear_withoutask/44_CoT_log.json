@@ -1,0 +1,105 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.similar_movies: Find similar movies and series\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI'm a student studying film and I'm looking for movies similar to the most recent movie played by Jason Momoa. Can you find me some similar movies?\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_4f6f249f-79d3-4daa-a9a1-c4173a5518da",
+        "function": {
+          "arguments": "{\"q\":\"Jason Momoa\"}",
+          "name": "get_id_for_similar_movies"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "get_id_for_similar_movies",
+    "content": "{\"error\": \"\", \"response\": \"{'movies:': [[{'movie': 'Freddy vs. Jason (2003)', 'id': '13739-freddy-vs-jason'}, {'movie': 'Jason Bourne (2016)', 'id': '38291-jason-bourne'}, {'movie': 'Friday the 13th Part VI: Jason Lives (1986)', 'id': '13784-jason-lives-friday-the-13th-part-vi'}, {'movie': 'Friday the 13th Part VIII: Jason Takes Manhattan (1989)', 'id': '13786-friday-the-13th-part-viii-jason-takes-manhattan'}, {'movie': 'Jason Goes to Hell: The Final Friday (1993)', 'id': '16122-jason-goes-to-hell-the-final-friday'}, {'movie': 'Jason and the Argonauts (1963)', 'id': '16121-jason-and-the-argonauts'}, {'movie': 'Jason X (2001)', 'id': '16123-jason-x'}, {'movie': 'Jason and the Argonauts (2000)', 'id': '16120-jason-and-the-argonauts'}, {'movie': 'Jason King (1971)', 'id': '85596-jason-king'}, {'movie': \\\"Jason's Lyric (1994)\\\", 'id': '16124-jasons-lyric'}, {'movie': 'Jason of Star Command (1978)', 'id': '35100-jason-of-star-command'}, {'movie': 'Jason and Shirley (2015)', 'id': '39835-jason-and-shirley'}]]}\"}",
+    "tool_call_id": "call_0_4f6f249f-79d3-4daa-a9a1-c4173a5518da"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_61f5cb0a-c03c-43bb-a5bf-ae400424d9c7",
+        "function": {
+          "arguments": "{\"is_id\":\"38291-jason-bourne\"}",
+          "name": "find_similar_for_similar_movies"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "find_similar_for_similar_movies",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'movies:': [[{'title': 'The Bourne Supremacy (2004)', 'genre': 'Action, Thriller', 'rating': '7.7', 'country': 'USA, Germany, India, Russia', 'duration': '108 min.', 'story': 'When a CIA operation to purchase classified Russian documents is blown by a rival agent, who then shows up in the sleepy seaside village where Bourne and Marie have been living. The pair run for their lives and Bourne, who promised retaliation ...', 'style': '                                        suspense, exciting, action thriller, entertaining, tense ...                                        ', 'audience': \\\"                                        boys' night, manly, girls' night                                        \\\", 'plot': '                                        cia, spy, conspiracy, amnesia, espionage, on the run, revenge, hitman, assassin, tough heroes, lone hero, chase ...                                        ', 'id': '9868-the-bourne-supremacy', 'img': 'https://bestsimilar.c...",
+    "tool_call_id": "call_0_61f5cb0a-c03c-43bb-a5bf-ae400424d9c7"
+  },
+  {
+    "content": "<\uff5ctool\u2581calls\u2581end\uff5c>",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_6bb3ca97-7e0f-4b7f-9b13-acb59fc181ff",
+        "function": {
+          "arguments": "{\"is_id\":\"38291-jason-bourne\"}",
+          "name": "find_similar_for_similar_movies"
+        },
+        "type": "function",
+        "index": 0
+      },
+      {
+        "id": "call_1_91e8834e-023c-4efb-9d59-8d3fc25445d4",
+        "function": {
+          "arguments": "{\"is_id\":\"13739-freddy-vs-jason\"}",
+          "name": "find_similar_for_similar_movies"
+        },
+        "type": "function",
+        "index": 1
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "find_similar_for_similar_movies",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'movies:': [[{'title': 'The Bourne Supremacy (2004)', 'genre': 'Action, Thriller', 'rating': '7.7', 'country': 'USA, Germany, India, Russia', 'duration': '108 min.', 'story': 'When a CIA operation to purchase classified Russian documents is blown by a rival agent, who then shows up in the sleepy seaside village where Bourne and Marie have been living. The pair run for their lives and Bourne, who promised retaliation ...', 'style': '                                        suspense, exciting, action thriller, entertaining, tense ...                                        ', 'audience': \\\"                                        boys' night, manly, girls' night                                        \\\", 'plot': '                                        cia, spy, conspiracy, amnesia, espionage, on the run, revenge, hitman, assassin, tough heroes, lone hero, chase ...                                        ', 'id': '9868-the-bourne-supremacy', 'img': 'https://bestsimilar.c...",
+    "tool_call_id": "call_0_6bb3ca97-7e0f-4b7f-9b13-acb59fc181ff"
+  },
+  {
+    "role": "tool",
+    "name": "find_similar_for_similar_movies",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'movies:': [[{'title': 'Jason Goes to Hell: The Final Friday (1993)', 'genre': 'Fantasy, Horror, Thriller', 'rating': '4.1', 'country': 'USA', 'duration': '87 min.', 'story': \\\"Jason Voorhees, the living, breathing essence of evil, is back for one fierce, final fling! Tracked down and blown to bits by a special FBI task force, everyone now assumes that he's finally dead. But everybody assumes wrong. Jason has been ...\\\", 'style': '                                        slasher, bloody, scary, sexy, suspense ...                                        ', 'audience': '                                        teens, adult                                        ', 'plot': '                                        serial killer, gory, friday the 13th, murder, violent, murder of a nude woman, police officer, torture, nudity, supernatural, blood, violence ...                                        ', 'id': '16122-jason-goes-to-hell-the-final-friday', 'img': 'https://bestsimi...",
+    "tool_call_id": "call_1_91e8834e-023c-4efb-9d59-8d3fc25445d4"
+  }
+]

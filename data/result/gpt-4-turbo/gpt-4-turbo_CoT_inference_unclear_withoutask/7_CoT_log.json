@@ -1,0 +1,87 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI need to find an engineering-related job in New York. Can you help me by providing a list of job offers in New York?\nBegin!\n"
+  },
+  {
+    "content": "Based on the user request of finding engineering-related jobs in New York, the appropriate step would be to use the \"search for jobs\" function with a query combining the job title pre-identified as 'engineer' and the location \u2018New York\u2019. I'll limit the search to within a reasonable radius for a dense urban area such as New York.\n\nI will proceed by calling the \"search_for_jsearch\" subfunction within the powerful search category from our tools.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_dmzvpayBHUL6tqEBGKoEQ0Ga",
+        "function": {
+          "arguments": "{\"query\":\"engineer in New York\",\"radius\":50}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '10325381-d0b3-4da1-87d6-0789709ae90d', 'parameters': {'query': 'engineer in new york', 'page': 1, 'num_pages': 1, 'radius': 50, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'hqekwBvFSSpz-2Z4AAAAAA==', 'employer_name': 'New York City', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-AeNZPb9OV9A2CCkKYvw3olB6_G1h5Z8pzzE&s=0', 'employer_website': None, 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'NYC Jobs - NYC.gov', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': 'Junior Engineer (GI)', 'job_apply_link': 'https://cityjobs.nyc.gov/job/junior-engineer-gi-in-queens-jid-23496?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options': [{'publisher': 'NYC Jobs - NYC.gov', 'apply_link': 'https://cityjobs.nyc.gov/job...",
+    "tool_call_id": "call_dmzvpayBHUL6tqEBGKoEQ0Ga"
+  },
+  {
+    "role": "user",
+    "content": "I want to look for a 'machanical engineer' job"
+  },
+  {
+    "content": "Given the updated query from the user for a \u201cmechanical engineer\u201d role in New York, it makes sense to precisely use those search terms, once again focusing on the region of New York. I will perform another search specifying \"mechanical engineer\" as the job title in the New York location with the tool we previously used.\n\nCalling the search function again with refined user requirements now.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_VDKP5HkBNaFJ12tx0goaIHsW",
+        "function": {
+          "arguments": "{\"query\":\"mechanical engineer in New York\",\"radius\":50}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'dec934f1-057a-4bd8-84f4-41ac749e2d76', 'parameters': {'query': 'mechanical engineer in new york', 'page': 1, 'num_pages': 1, 'radius': 50, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'yxtIERGYS26rWXp8AAAAAA==', 'employer_name': 'Parsons Corporation', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWoeHM7rt-U37K1_ab3N5lIK6QuMuDbepnStZr&s=0', 'employer_website': 'https://www.parsons.com', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Parsons Careers - Parsons Corporation', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': 'Sr. Mechanical Design Engineer - Movable Structures', 'job_apply_link': 'https://jobs.parsons.com/jobs/sr-mechanical-design-engineer-movable-structures-new-york-r-163859-jobs--engineering--?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': ...",
+    "tool_call_id": "call_VDKP5HkBNaFJ12tx0goaIHsW"
+  },
+  {
+    "content": "Here are the details of a job position for a 'Mechanical Engineer' in New York that fits your query:\n\n- **Job Title**: Sr. Mechanical Design Engineer - Movable Structures\n- **Employer Name**: Parsons Corporation\n- **Employer Website**: [Parsons Corporation](https://www.parsons.com)\n- **Type**: Full-time\n- **Apply Link**: [Apply Here](https://jobs.parsons.com/jobs/sr-mechanical-design-engineer-movable-structures-new-york-r-163859-jobs--engineering--?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\n\nThis role by Parsons Corporation emphasizes experience in designing movable structures and requires that the employment is a full-time agreement.\n\nTo finalilze, I will mark my current interactions complete using the finish function to conclude the session.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_cEPtGPPoSM3omaq0CRsBUeYm",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"Job Title: Sr. Mechanical Design Engineer - Movable Structures\\nEmployer Name: Parsons Corporation\\nEmployer Website: [Parsons Corporation](https://www.parsons.com)\\nJob Type: Full-time\\nApply Link: [Apply Here](https://jobs.parsons.com/jobs/sr-mechanical-design-engineer-movable-structures-new-york-r-163859-jobs--engineering--?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_cEPtGPPoSM3omaq0CRsBUeYm"
+  },
+  {
+    "role": "user",
+    "content": "I want to look for a 'machanical engineer' job"
+  }
+]

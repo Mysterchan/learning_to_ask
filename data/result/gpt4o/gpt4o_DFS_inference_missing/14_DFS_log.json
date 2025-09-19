@@ -1,0 +1,72 @@
+[
+  {
+    "role": "user",
+    "content": "\nCan you provide me with the carrier details of my package?\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please provide me with the tracking number of your package? Additionally, do you know the carrier already, or should I try to detect it based on the tracking number?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "'NY323068998GB' is my tracking number"
+  },
+  {
+    "content": "Great! I'll try to detect the carrier for your tracking number \"NY323068998GB\" to provide the carrier details. Let me proceed.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_18P5D4tad441oCI9ioxoOjmS",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}",
+    "tool_call_id": "call_18P5D4tad441oCI9ioxoOjmS"
+  },
+  {
+    "content": "The tracking number \"NY323068998GB\" is associated with the following carriers:\n\n- **Royal Mail** (Carrier Code: royal-mail)\n- **UBI Logistics** (Carrier Code: ubi-logistics)\n\nIf you wish to proceed with additional details or tracking, let me know the specific carrier you'd like details for, or I can proceed with both.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_t5VlwI7OTXQVv3sLibcAywnJ",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The tracking number 'NY323068998GB' is associated with the following carriers:\\n\\n- **Royal Mail** (Carrier Code: royal-mail)\\n- **UBI Logistics** (Carrier Code: ubi-logistics)\\n\\nLet me know if you want further details or wish to track your package.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_t5VlwI7OTXQVv3sLibcAywnJ"
+  }
+]

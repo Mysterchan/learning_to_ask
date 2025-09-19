@@ -1,0 +1,33 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.zillow_v2: Access US and CA property data in JSON, CSV, or Excel formats. Search listings, compare zestimate home values, and discover agent details.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nMy family and I are planning to move to a new city. We need help finding rental properties in the area. Can you give us the rent Zestimate and comparable properties? We would also like to see photos for these properties.\nBegin!\n"
+  },
+  {
+    "content": "Excellent task! I notice that to help your family find rental properties, I'll need to follow a few steps:\n1. I realize I'll need a specific address to start with the rent Zestimate search\n2. After getting rent details, I'll want to see property photos\n\nHowever, I've noticed a challenge - you haven't specified an exact address or city. Without a specific location, I can't perform the search effectively.\n\nI'll ask you: Could you please provide me with a specific street address in the city where you're planning to move? This will help me use the Zillow tools to find rental zestimates and comparable properties, as well as retrieve property photos.\n\nFor now, I'll use the Finish function to formally request more information.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_013EjunqmNQJSdBfwzL2HK1Q",
+        "type": "function",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"I'm ready to help you find rental properties, but I need a specific address to begin the search. Could you provide me with a full street address in the city where you're planning to move? Once I have that, I can:\\n1. Find rent Zestimates\\n2. Show comparable rental properties\\n3. Retrieve property photos\\n\\nExample of what I need: \\\"1234 Main St, Springfield, IL 62701\\\"\"}",
+          "name": "Finish"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "toolu_013EjunqmNQJSdBfwzL2HK1Q"
+  }
+]

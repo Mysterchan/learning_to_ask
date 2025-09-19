@@ -1,0 +1,200 @@
+{
+  "win": false,
+  "ask_corresponding_question": false,
+  "redundant_ask_count": 1,
+  "try_count": 1,
+  "trys": [
+    {
+      "chain": [
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 1,
+          "node_type": "Seeking",
+          "description": "Question: Are you looking for Gong Yoo's filmography-appearances specifically in the TV show \"Squid Game\" with IMDb ID tt0092455? Or are you referencing \"Squid Game\" by mistake?",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 2,
+          "node_type": "Action",
+          "description": "actors_get_filmography_appearances_for_online_movie_database",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 3,
+          "node_type": "Action Input",
+          "description": "{\n  \"category\": \"actor\",\n  \"nconst\": \"nm1459967\",\n  \"tconst\": \"tt0092455\"\n}",
+          "Elo": 1000.0,
+          "observation": "{\"error\": \"\", \"response\": \"[]\"}",
+          "observation_code": 0,
+          "child_count": 1,
+          "expand_num": 0,
+          "io_state": {}
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 4,
+          "node_type": "Thought",
+          "description": "It seems that there is no available filmography-appearances information for Gong Yoo in the movie with IMDb ID tt0092455. Unfortunately, I couldn't extract the desired information.",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 5,
+          "node_type": "Action",
+          "description": "Finish",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": true,
+          "finished": false,
+          "depth": 6,
+          "node_type": "Action Input",
+          "description": "{\n  \"return_type\": \"give_up_and_restart\"\n}",
+          "Elo": 1000.0,
+          "observation": "{\"response\":\"chose to give up and restart\"}",
+          "observation_code": 4,
+          "child_count": 0,
+          "expand_num": 0,
+          "io_state": {}
+        }
+      ],
+      "win": false
+    }
+  ],
+  "compare_candidates": [],
+  "forward_args": {
+    "single_chain_max_step": 12,
+    "pass_at": 1,
+    "answer": 1,
+    "query_id": 30,
+    "output_dir_path": "gpt-3.5-turbo_CoT_inference_missing"
+  },
+  "answer_generation": {
+    "valid_data": false,
+    "final_answer": "",
+    "function": [
+      {
+        "name": "actors_get_filmography_appearances_for_online_movie_database",
+        "description": "This is the subfunction for tool \"online_movie_database\", you can use this tool.The description of this function is: \"Get filmography appearances of an actor, actress, etc...\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tconst": {
+              "type": "string",
+              "description": "You need to extract the value started with 'tt' of id field returned from \u2026/title/auto-complete or \u2026/title/find endpoint. Ex : tt0944947",
+              "example_value": "tt0092455"
+            },
+            "nconst": {
+              "type": "string",
+              "description": "You need to extract the value started with 'nm' returned in \u2026/actors/list-born-today or \u2026/actors/list-most-popular-celebs endpoint. Ex : nm0001667",
+              "example_value": "nm0000653"
+            },
+            "category": {
+              "type": "string",
+              "description": "Accept one of following actor|actress|soundtrack|director|writer",
+              "example_value": "actor"
+            },
+            "region": {
+              "type": "string",
+              "description": "Accept one of following AR|AU|CA|CL|ES|DE|IT|MX|NZ|PT|ES|GB|US",
+              "example_value": "US"
+            }
+          },
+          "required": [
+            "tconst",
+            "nconst"
+          ],
+          "optional": [
+            "category",
+            "region"
+          ]
+        }
+      },
+      {
+        "name": "title_get_crazycredits_for_online_movie_database",
+        "description": "This is the subfunction for tool \"online_movie_database\", you can use this tool.The description of this function is: \"Get crazycredits in specific title\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tconst": {
+              "type": "string",
+              "description": "You need to extract the value started with 'tt' of id field returned from \u2026/title/auto-complete or \u2026/title/find endpoint. Ex : tt0944947",
+              "example_value": "tt0944947"
+            }
+          },
+          "required": [
+            "tconst"
+          ],
+          "optional": []
+        }
+      },
+      {
+        "name": "title_get_genres_for_online_movie_database",
+        "description": "This is the subfunction for tool \"online_movie_database\", you can use this tool.The description of this function is: \"Get genres information of the title\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tconst": {
+              "type": "string",
+              "description": "You need to extract the value started with 'tt' of id field returned from \u2026/title/auto-complete or \u2026/title/find endpoint. Ex : tt0944947",
+              "example_value": "tt0944947"
+            }
+          },
+          "required": [
+            "tconst"
+          ],
+          "optional": []
+        }
+      },
+      {
+        "name": "Finish",
+        "description": "If you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "return_type": {
+              "type": "string",
+              "enum": [
+                "give_answer",
+                "give_up_and_restart"
+              ]
+            },
+            "final_answer": {
+              "type": "string",
+              "description": "The final answer you want to give the user. You should have this field if \"return_type\"==\"give_answer\""
+            }
+          },
+          "required": [
+            "return_type"
+          ]
+        }
+      }
+    ],
+    "query_count": 3,
+    "total_tokens": 3306,
+    "train_messages": [],
+    "chain": [],
+    "query": "I am a movie enthusiast and would like to extract the Gong Yoo filmography-appearances, from Movies 'Squid Game', tt0092455"
+  }
+}

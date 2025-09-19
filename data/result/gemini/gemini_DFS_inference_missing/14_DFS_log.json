@@ -1,0 +1,64 @@
+[
+  {
+    "role": "user",
+    "content": "\nCan you provide me with the carrier details of my package?\nBegin!\n"
+  },
+  {
+    "content": "Question: What is the tracking number of your package?\n",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "'NY323068998GB' is my tracking number"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_d12ec38f127342a6808680165e16e673",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "The tool output is {\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}, remember to call Finish tool when either if you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+    "tool_call_id": "call_d12ec38f127342a6808680165e16e673"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_05440e3a91ce420c9f7786dc3251c362",
+        "function": {
+          "arguments": "{\"final_answer\":\"Based on the tracking number NY323068998GB, the possible carriers are Royal Mail and UBI.\",\"return_type\":\"give_answer\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_05440e3a91ce420c9f7786dc3251c362"
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs and their estimated salaries\nBegin!\n"
+  },
+  {
+    "content": "Question: What specific job title or field are you interested in searching for opportunities in New York? This will help me provide you with more accurate job insights and estimated salaries.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "I am looking for software developer jobs"
+  },
+  {
+    "content": "To provide targeted results, I will now use the \"search_for_jsearch\" function to find your job opportunities in New York and gather the immediate results such as job titles and employers. I will then extract job details and estimate salaries for certain filtered quality jobs. Let's perform the job search first.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_IWMUe8qURlQqXbHvNSDyHE2m",
+        "function": {
+          "arguments": "{\"query\":\"software developer in New York\"}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '76ac521e-bf16-4019-8620-c4dc1551df62', 'parameters': {'query': 'software developer in new york', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'aI4NXUCvbLtlZICTAAAAAA==', 'employer_name': 'New York City', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-AeNZPb9OV9A2CCkKYvw3olB6_G1h5Z8pzzE&s=0', 'employer_website': 'https://www.nyc.gov/', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'NYC Jobs - NYC.gov', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': 'Application Developer', 'job_apply_link': 'https://cityjobs.nyc.gov/job/application-developer-in-brooklyn-jid-28614?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options': [{'publisher': 'NYC Jobs - NYC.gov', 'apply_link': 'https://...",
+    "tool_call_id": "call_IWMUe8qURlQqXbHvNSDyHE2m"
+  },
+  {
+    "content": "I have found a suitable opportunity for a software developer position:\n**Job Title:** Application Developer   \n**Employer:** New York City  \n**Job Type:** Full-time   \n**Application Link:** [Apply here](https://cityjobs.nyc.gov/job/application-developer-in-brooklyn-jid-28614?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)   \n**Employer Website:** [Learn More](https://www.nyc.gov/)\n\nBefore proceeding with details, I will retrieve the estimated salary for this position to give a clearer insight. Let's fetch the estimated salary for the \"Application Developer\" position around New York.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_O4lNaquOfSRYNVKLYlUPu8Rm",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"Application Developer\"}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '3084ae48-f368-4aef-917d-c79f299b8bec', 'parameters': {'job_title': 'application developer', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York City, NY', 'job_title': 'Application Developer', 'min_salary': 125800.56, 'max_salary': 184203.76, 'median_salary': 150966.77, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Application%20Developer&locT=C&locId=1132348', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "call_O4lNaquOfSRYNVKLYlUPu8Rm"
+  },
+  {
+    "content": "For the position of \"Application Developer\" in New York, estimated yearly salaries are as follows:\n- **Minimum Salary:** $125,801\n- **Median Salary:** $150,967\n- **Maximum Salary:** $184,204\n\nThese figures were sourced with high confidence from published data on Glassdoor.\n\nIf this position aligns with your interest and projected have salary, you may visit the [employing website](https://www.nyc.gov/) for more information or navigate directly to the [application link](https://cityjobs.nyc.gov/job/application-developer-in-brooklyn-jid-28614?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic) to apply for the job as an Application Developer with New York City.\n\nNow, let me close this session.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_YtJ3LNIXV2rNqajzWXhuNmON",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"You have an opportunity for an Application Developer role in New York City, offered full-time. Estimated Yearly Salary Range: $125,801 minimum to $184,204 maximum. For more details and to apply, visit: [Application Developer Job](https://cityjobs.nyc.gov/job/application-developer-in-brooklyn-jid-28614?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_YtJ3LNIXV2rNqajzWXhuNmON"
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate and looking for jobs in New York. Can you help me to look for the job salary in new york?\nBegin!\n"
+  },
+  {
+    "content": "Question: What specific job title or field are you interested in for the salary estimation in New York?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "Nodejs developer"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_2f754fc3-55e8-4019-be36-01d34ddd194b",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"Nodejs developer\"}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '66844c40-48f6-47b2-9298-c775d61cb621', 'parameters': {'job_title': 'nodejs developer', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York City, NY', 'job_title': 'Nodejs Developer', 'min_salary': 111318.77, 'max_salary': 184818.82, 'median_salary': 142347.59, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Nodejs%20Developer&locT=C&locId=1132348', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "call_0_2f754fc3-55e8-4019-be36-01d34ddd194b"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_85c016d5-fbc4-4b72-add7-5c94a09c3b37",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The estimated salary for a Node.js Developer in New York ranges from $111,318.77 to $184,818.82 per year, with a median salary of $142,347.59 per year. This information is based on data from Glassdoor.\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_85c016d5-fbc4-4b72-add7-5c94a09c3b37"
+  }
+]

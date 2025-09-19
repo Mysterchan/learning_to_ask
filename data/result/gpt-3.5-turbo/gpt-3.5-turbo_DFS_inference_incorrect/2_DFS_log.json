@@ -1,0 +1,110 @@
+[
+  {
+    "role": "user",
+    "content": "\nI need to track a package with the tracking number NY9999999990. Can you give me the tracking information of specific package? After finding the tracking information, detect the carrier for this tracking number\nBegin!\n"
+  },
+  {
+    "content": "Question: Please provide the tracking number so I can proceed to find the tracking information. ",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is YT2003521266065328"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_gqoGOx1KlDcG9hK9rYmMHGLg",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"YT2003521266065328\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'originCountryData': {'stausDataNum': 1, 'substatus': 'notfound002', 'destinationcountryname': '', 'itemTimeLength': None, 'infoState': 3, 'phonenum': '4000-2621-26', 'weblink': 'http://www.yunexpress.com/'}, 'destinationCountryData': [], 'costTimeData': {'carrier_code': 'yunexpress', 'original': '', 'destination': '', 'total': 0, 'delivered': 0, 'range1': 0, 'range3': 0, 'range4': 0, 'range5': 0, 'range6': 0, 'day': 0}, 'lastEvent': '', 'expressType': 'express', 'stausDataNum': 1, 'function': 2, 'itemkey': 'DqCJiHaGSfVTJ'}\"}",
+    "tool_call_id": "call_gqoGOx1KlDcG9hK9rYmMHGLg"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_txsF8fi1DuR5vgMJi5LjIIDu",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"YT2003521266065328\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Yun Express', 'code': 'yunexpress'}]}\"}",
+    "tool_call_id": "call_txsF8fi1DuR5vgMJi5LjIIDu"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_FGqfxWAIDOLiwu64fIoWIWKE",
+        "function": {
+          "arguments": "{\"final_answer\":\"The tracking information for the package with tracking number YT2003521266065328 shows that it is handled by Yun Express. The current status indicates that the package could not be found (status code: notfound002). For more information, you can visit their website: [Yun Express](http://www.yunexpress.com/). You can also reach customer service at the phonenumber 4000-2621-26.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{error:\"must have \"return_type\"\"}",
+    "tool_call_id": "call_FGqfxWAIDOLiwu64fIoWIWKE"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_6t3xgwQHVRCqPKIic1xDbOhW",
+        "function": {
+          "arguments": "{\"final_answer\":\"The tracking information for the package with tracking number YT2003521266065328 shows that it is handled by Yun Express. The current status indicates that the package could not be found (status code: notfound002). For more information, you can visit their website: [Yun Express](http://www.yunexpress.com/). You can also reach customer service at the phone number 4000-2621-26.\",\"return_type\":\"give_answer\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_6t3xgwQHVRCqPKIic1xDbOhW"
+  }
+]

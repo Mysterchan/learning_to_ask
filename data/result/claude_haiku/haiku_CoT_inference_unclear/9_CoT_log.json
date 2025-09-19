@@ -1,0 +1,102 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs and their estimated salaries\nBegin!\n"
+  },
+  {
+    "content": "I'll help you find job opportunities for a fresh graduate in New York. I'll break this down into a few steps to get comprehensive information.\n\nFirst, I'll search for entry-level jobs in New York that are suitable for recent graduates:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01Bbmre8dXvH5twL5hfEPcxe",
+        "type": "function",
+        "function": {
+          "arguments": "{\"query\": \"entry-level jobs in New York\", \"job_requirements\": \"[\\\"no_experience\\\"]\", \"employment_types\": \"[\\\"FULLTIME\\\"]\"}",
+          "name": "search_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"Function executing from toolenv.tools.Data.jsearch.api import search error...\\ninvalid syntax. Perhaps you forgot a comma? (<string>, line 1)\", \"response\": \"\"}",
+    "tool_call_id": "toolu_01Bbmre8dXvH5twL5hfEPcxe"
+  },
+  {
+    "content": "I'll modify my approach and try a more specific search:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01EUCSM4U5grbDyR5jLGXNiw",
+        "type": "function",
+        "function": {
+          "arguments": "{\"query\": \"recent graduate jobs in New York\", \"remote_jobs_only\": false}",
+          "name": "search_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'status': 'OK', 'request_id': '69835b16-b678-4a6f-bd56-0de1083697a8', 'parameters': {'query': 'recent graduate jobs in new york', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'AxDESkIoqCESkSsgAAAAAA==', 'employer_name': 'Temporary Alternatives', 'employer_logo': None, 'employer_website': 'https://tempalt.com', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Temporary Alternatives', 'job_employment_type': None, 'job_employment_types': [], 'job_employment_type_text': None, 'job_title': 'Recent College Graduates', 'job_apply_link': 'https://tempalt.com/job/147/recent-college-graduates/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options': [{'publisher': 'Temporary Alternatives', 'apply_link': 'https://tempalt.com/job/147/recent-college-graduates/?utm_campaign=google_jobs_apply&utm_source=google_jobs...",
+    "tool_call_id": "toolu_01EUCSM4U5grbDyR5jLGXNiw"
+  },
+  {
+    "content": "Now, I'll check salary estimations for a few potential entry-level roles:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01HuBo2JwBunysiMkCyQw1MW",
+        "type": "function",
+        "function": {
+          "arguments": "{\"job_title\": \"Entry Level Business Analyst\", \"location\": \"New York, NY, USA\"}",
+          "name": "estimated_salary_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'd3f5340e-720a-4edc-b348-45a4886dd132', 'parameters': {'job_title': 'entry level business analyst', 'location': 'new york, ny, usa', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York State', 'job_title': 'Business Analyst Entry Level', 'min_salary': 96563.16, 'max_salary': 162654.19, 'median_salary': 124471.01, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Business%20Analyst%20Entry%20Level&locT=S&locId=428', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "toolu_01HuBo2JwBunysiMkCyQw1MW"
+  },
+  {
+    "content": "Let me try another role:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01NPDNfeogaaasfivzQ9YAft",
+        "type": "function",
+        "function": {
+          "arguments": "{\"job_title\": \"Entry Level Software Developer\", \"location\": \"New York, NY, USA\"}",
+          "name": "estimated_salary_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'b7fabc32-a404-41aa-8343-a3532e3b818f', 'parameters': {'job_title': 'entry level software developer', 'location': 'new york, ny, usa', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York State', 'job_title': 'Entry Level Software Developer', 'min_salary': 89355.04, 'max_salary': 127543.97, 'median_salary': 106347.05, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Entry%20Level%20Software%20Developer&locT=S&locId=428', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "toolu_01NPDNfeogaaasfivzQ9YAft"
+  }
+]

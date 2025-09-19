@@ -1,0 +1,118 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs in London?\nBegin!\n"
+  },
+  {
+    "content": "I will start by searching for professional job opportunities in London that might be suitable for a university fresh graduate. I will use the `search_for_jsearch` function to find relevant job listings.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_3f4ad158-88d9-4841-aa41-2a828ae54806",
+        "function": {
+          "arguments": "{\"query\":\"professional jobs in London\",\"num_pages\":\"1\",\"page\":1}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '7f91ccdc-afa2-4e89-b994-f22acfd40d83', 'parameters': {'query': 'professional jobs in london', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'gCCNmW-3mbv_-V4VAAAAAA==', 'employer_name': 'Apogee Corporation', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsQZB4757zuWLzpnzx646Qz8P2gtBxCUM2JXQ8&s=0', 'employer_website': 'https://apogeecorp.com', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'LinkedIn', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': 'Professional Services Lead Technical Consultant', 'job_apply_link': 'https://uk.linkedin.com/jobs/view/professional-services-lead-technical-consultant-at-apogee-corporation-4131439927?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options'...",
+    "tool_call_id": "call_0_3f4ad158-88d9-4841-aa41-2a828ae54806"
+  },
+  {
+    "role": "user",
+    "content": "I am looking for a teaching job"
+  },
+  {
+    "content": "To find teaching job opportunities, I will use the `search_for_jsearch` function to search for teaching jobs. I will specify the location and job title to get relevant results.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_22910741-ebc9-40cf-83a3-dbe46987bc2b",
+        "function": {
+          "arguments": "{\"query\":\"teaching job in New York\",\"num_pages\":\"1\",\"page\":1}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '348652ec-b4d8-4a44-af83-7464e6a8c577', 'parameters': {'query': 'teaching job in new york', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'P8MIzPsQU83VbegAAAAAAA==', 'employer_name': 'Manhattan Schoolhouse', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQEdnPiZmvaIgpGrylRZFGnvMOqZq8awU86C0p&s=0', 'employer_website': 'https://www.schools.nyc.gov', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Glassdoor', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': \\\"Lead Two's Classroom Teacher\\\", 'job_apply_link': 'https://www.glassdoor.com/job-listing/lead-two-s-classroom-teacher-manhattan-schoolhouse-JV_IC1132348_KO0,28_KE29,50.htm?jl=1009605878409&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': True, 'job_apply_quality_score': None, 'app...",
+    "tool_call_id": "call_0_22910741-ebc9-40cf-83a3-dbe46987bc2b"
+  },
+  {
+    "role": "user",
+    "content": "I am looking for a teaching job"
+  },
+  {
+    "content": "To find teaching job opportunities, I will use the `search_for_jsearch` function to search for teaching jobs in New York. I will specify the location and job title to get relevant results.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_b7c0e0e9-3cc3-4856-a362-b2d4b84fa754",
+        "function": {
+          "arguments": "{\"query\":\"teaching job in New York\",\"num_pages\":\"1\",\"page\":1}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '348652ec-b4d8-4a44-af83-7464e6a8c577', 'parameters': {'query': 'teaching job in new york', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'P8MIzPsQU83VbegAAAAAAA==', 'employer_name': 'Manhattan Schoolhouse', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQEdnPiZmvaIgpGrylRZFGnvMOqZq8awU86C0p&s=0', 'employer_website': 'https://www.schools.nyc.gov', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Glassdoor', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': \\\"Lead Two's Classroom Teacher\\\", 'job_apply_link': 'https://www.glassdoor.com/job-listing/lead-two-s-classroom-teacher-manhattan-schoolhouse-JV_IC1132348_KO0,28_KE29,50.htm?jl=1009605878409&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': True, 'job_apply_quality_score': None, 'app...",
+    "tool_call_id": "call_0_b7c0e0e9-3cc3-4856-a362-b2d4b84fa754"
+  },
+  {
+    "role": "user",
+    "content": "I am looking for a teaching job"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_63fe3015-0b03-4172-b6a6-2d3d35729ce0",
+        "function": {
+          "arguments": "{\"query\":\"teaching job in New York\",\"num_pages\":\"1\",\"page\":1}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '348652ec-b4d8-4a44-af83-7464e6a8c577', 'parameters': {'query': 'teaching job in new york', 'page': 1, 'num_pages': 1, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'P8MIzPsQU83VbegAAAAAAA==', 'employer_name': 'Manhattan Schoolhouse', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQEdnPiZmvaIgpGrylRZFGnvMOqZq8awU86C0p&s=0', 'employer_website': 'https://www.schools.nyc.gov', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Glassdoor', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': \\\"Lead Two's Classroom Teacher\\\", 'job_apply_link': 'https://www.glassdoor.com/job-listing/lead-two-s-classroom-teacher-manhattan-schoolhouse-JV_IC1132348_KO0,28_KE29,50.htm?jl=1009605878409&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': True, 'job_apply_quality_score': None, 'app...",
+    "tool_call_id": "call_0_63fe3015-0b03-4172-b6a6-2d3d35729ce0"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.tiktok_download_video: Tiktok Best Spider. Fast. HD Quality. Without Watermark Download. Video Full Detail. Signature X-Argus,X-Ladon,X-Gorgon mail: nb429429@gmail.com\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI'm a music lover and want to discover TikTok videos featuring a specific song. Can you fetch the music information for the song with the ID '8394725634879021564'? Additionally, retrieve the videos that feature this song.\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_1684fff0-8ddd-4005-ab6b-596da2965d38",
+        "function": {
+          "arguments": "{\"url\": \"8394725634879021564\"}",
+          "name": "get_music_info_for_tiktok_download_video"
+        },
+        "type": "function",
+        "index": 0
+      },
+      {
+        "id": "call_1_c0a4e56a-16de-4195-b7c0-64ba60d1efd0",
+        "function": {
+          "arguments": "{\"cursor\": \"0\", \"count\": \"10\", \"music_id\": \"8394725634879021564\"}",
+          "name": "get_music_post_video_list_for_tiktok_download_video"
+        },
+        "type": "function",
+        "index": 1
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "get_music_info_for_tiktok_download_video",
+    "content": "{\"error\": \"\", \"response\": \"{'code': -1, 'msg': 'The Music url parsing is failed! Please check your url.', 'processed_time': 0.0004}\"}",
+    "tool_call_id": "call_0_1684fff0-8ddd-4005-ab6b-596da2965d38"
+  },
+  {
+    "role": "tool",
+    "name": "get_music_post_video_list_for_tiktok_download_video",
+    "content": "{\"error\": \"\", \"response\": \"{'code': 0, 'msg': 'success', 'processed_time': 0.1825, 'data': {'videos': [], 'cursor': None, 'hasMore': None}}\"}",
+    "tool_call_id": "call_1_c0a4e56a-16de-4195-b7c0-64ba60d1efd0"
+  },
+  {
+    "content": "\u76f8\u5bb9\n\nDue to the limitation of toolset, I cannot solve the question. The provided music ID did not return any valid information or videos. Please ensure the music ID is correct or try another one.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  }
+]

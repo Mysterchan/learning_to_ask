@@ -1,0 +1,87 @@
+[
+  {
+    "role": "user",
+    "content": "\nI am planning a trip to the US and I want to know the date and time after adding 2004 hours to the start date '2013-12-31' and start time '25:15'. Can you provide me with this information?\nBegin!\n"
+  },
+  {
+    "content": "I noticed there's an issue with the start time you provided. The time '25:15' is not a valid time in the 24-hour format. Times should be between 00:00 and 23:59. \n\nQuestion: Could you please provide a valid start time in the 24-hour format for your calculation? For example, if you meant 1:15 AM, you would write '01:15'.\n\nI'll wait for your clarification before proceeding with the calculation using the working days API.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct start date is '2013-12-31' and start time is '08:15'"
+  },
+  {
+    "content": "Thank you for the clarification. I'll help you calculate the date and time after adding 2004 hours to the start date and time.\n\nThought: I'll use the get_1_3_add_working_hours_for_working_days function to add the specified hours, using the US working days configuration.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01GRDRM8fJALmycsHbvasMHg",
+        "type": "function",
+        "function": {
+          "arguments": "{\"start_date\": \"2013-12-31\", \"start_time\": \"08:15\", \"country_code\": \"US\", \"increment_time\": \"2004\"}",
+          "name": "get_1_3_add_working_hours_for_working_days"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "get_1_3_add_working_hours_for_working_days",
+    "content": "{\"error\": \"\", \"response\": \"Invalid 'increment_time' parameter. It must be H:i or -H:i\"}",
+    "tool_call_id": "toolu_01GRDRM8fJALmycsHbvasMHg"
+  },
+  {
+    "content": "I apologize for the error. The function requires the time to be in the format \"H:i\". Let me correct the function call:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01NpWd9rY2PgWoYTxSbtwnLf",
+        "type": "function",
+        "function": {
+          "arguments": "{\"start_date\": \"2013-12-31\", \"start_time\": \"08:15\", \"country_code\": \"US\", \"increment_time\": \"2004:00\"}",
+          "name": "get_1_3_add_working_hours_for_working_days"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "get_1_3_add_working_hours_for_working_days",
+    "content": "{\"error\": \"\", \"response\": \"{'end_date': '2014-12-30', 'end_time': '14:15'}\"}",
+    "tool_call_id": "toolu_01NpWd9rY2PgWoYTxSbtwnLf"
+  },
+  {
+    "content": "Now I'll provide the final answer:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_0182r7jJbCVGkzqL1BJutypy",
+        "type": "function",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"After adding 2004 hours to the start date of 2013-12-31 at 08:15, the resulting date and time is:\\n- End Date: 2014-12-30\\n- End Time: 14:15\\n\\nThis calculation takes into account working days and US holidays, so the result reflects the actual working time progression.\"}",
+          "name": "Finish"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "toolu_0182r7jJbCVGkzqL1BJutypy"
+  }
+]

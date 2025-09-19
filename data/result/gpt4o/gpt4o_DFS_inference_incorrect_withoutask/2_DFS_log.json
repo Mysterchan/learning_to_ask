@@ -1,0 +1,75 @@
+[
+  {
+    "role": "user",
+    "content": "\nI need to track a package with the tracking number NY9999999990. Can you give me the tracking information of specific package? After finding the tracking information, detect the carrier for this tracking number\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_R2FpHBiG5MHZ1AzYRFSPLjSK",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY9999999990\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{}\"}",
+    "tool_call_id": "call_R2FpHBiG5MHZ1AzYRFSPLjSK"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_9awgt8ZOau6y41PygH1UMJ9h",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY9999999990\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Aramex Australia', 'code': 'fastway-au'}, {'name': 'Fastway Ireland', 'code': 'fastway-ie'}]}\"}",
+    "tool_call_id": "call_9awgt8ZOau6y41PygH1UMJ9h"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_inz7cfGUEMGCDYSgopSePtER",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"Tracking details for tracking number NY9999999990 could not be retrieved because no detailed tracking information was available.\\n\\nHowever, the carrier codes that match this tracking number include:\\n1. Aramex Australia (code: fastway-au)\\n2. Fastway Ireland (code: fastway-ie).\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_inz7cfGUEMGCDYSgopSePtER"
+  }
+]

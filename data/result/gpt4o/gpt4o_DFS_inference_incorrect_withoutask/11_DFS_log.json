@@ -1,0 +1,52 @@
+[
+  {
+    "role": "user",
+    "content": "\nI need to verify the validity of an email address. The email address I want to verify is testing.com\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_ItBmGiRmgaB9mqJ7uuoQPxMU",
+        "function": {
+          "arguments": "{\"email\":\"testing.com\"}",
+          "name": "validate_email_for_validate_email"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "validate_email_for_validate_email",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 200, 'message': 'Success', 'result': [{'email': 'testing.com', 'isValid': False, 'failureType': 'regex', 'username': 'testing.com', 'regex_validation': {'value': False, 'reason': 'Email does not contain \\\"@\\\".'}, 'typo_validation': {'value': False}, 'disposable_validation': {'value': False}, 'mx_validation': {'value': False}, 'smtp_validation': {'value': False}}]}\"}",
+    "tool_call_id": "call_ItBmGiRmgaB9mqJ7uuoQPxMU"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_Zbtfhzlrj4C1ca2RgUg6lNXM",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The email address \\\"testing.com\\\" is not valid. Reason: The email does not contain the expected \\\"@\\\" character. Please provide a valid email address for verification.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_Zbtfhzlrj4C1ca2RgUg6lNXM"
+  }
+]

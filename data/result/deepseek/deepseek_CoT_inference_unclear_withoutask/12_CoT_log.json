@@ -1,0 +1,58 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.golf_leaderboard_data: Major golf tours, fixtures, results and up to the minute leaderboard data to enhance your applications.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a golf fan and I am interested in the PGA tour. Can you provide me with the projected PGA rankings for the covid season?\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_822e9b43-7e43-4d30-84a9-118fbb02f9b8",
+        "function": {
+          "arguments": "{\"season\":\"2020\"}",
+          "name": "projected_pga_rankings_for_golf_leaderboard_data"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "projected_pga_rankings_for_golf_leaderboard_data",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'title': 'Projected PGA Rankings 2020', 'description': 'Updates projected rankings during PGA events', 'fields': {'updated_at': 'Timestamp - Format ISO UTC 2020-08-13T05:45:03+00:00'}}, 'results': {'rankings': []}}\"}",
+    "tool_call_id": "call_0_822e9b43-7e43-4d30-84a9-118fbb02f9b8"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_759dceee-e3e0-463f-bec6-91412523cb49",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The projected PGA rankings for the 2020 season (COVID season) are currently unavailable. The data returned an empty result, indicating that there might be no projected rankings available for that specific season.\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_759dceee-e3e0-463f-bec6-91412523cb49"
+  }
+]

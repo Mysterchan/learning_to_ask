@@ -1,0 +1,114 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.olato_quotes: Olato Quote APIs gives you random quotes about motivation, sucess and love quotes.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI want to start my day with some quotes. Could you give me some quotes of my interested topic?\nBegin!\n"
+  },
+  {
+    "content": "I noticed that you're interested in getting some quotes to start your day, but you didn't specify which type of quotes you'd like. I see we have three different quote categories available:\n1. Love quotes\n2. Success quotes\n3. Motivation quotes\n\nQuestion: Which category of quotes would you prefer to begin your day with - love, success, or motivation?\n\nI'll be happy to retrieve a random quote from whichever category you choose. Just let me know your preference, and I'll use the appropriate API to generate an inspiring quote for you.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "I could not provide relevant information for this question."
+  },
+  {
+    "content": "I understand that you're uncertain about which type of quote you'd like. In this case, I'll help you by providing a motivational quote, which is often a great way to start the day and boost one's spirits.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01ESPrRb95gpsfnzn1ZAVL2Z",
+        "type": "function",
+        "function": {
+          "arguments": "{}",
+          "name": "motivation_quote_for_olato_quotes"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "motivation_quote_for_olato_quotes",
+    "content": "{\"error\": \"\", \"response\": \"{\\\"quote\\\":\\\"The future belongs to those who believe in the beauty of their dreams. -Eleanor Roosevelt\\\"}\"}",
+    "tool_call_id": "toolu_01ESPrRb95gpsfnzn1ZAVL2Z"
+  },
+  {
+    "content": "Let me retrieve another quote to give you some variety:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_013AujR3b5e1SRV9EhkiZ7iU",
+        "type": "function",
+        "function": {
+          "arguments": "{}",
+          "name": "success_quote_for_olato_quotes"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "success_quote_for_olato_quotes",
+    "content": "{\"error\": \"\", \"response\": \"{\\\"quote\\\":\\\"Success is walking from failure to failure with no loss of enthusiasm. -Winston Churchill\\\"}\"}",
+    "tool_call_id": "toolu_013AujR3b5e1SRV9EhkiZ7iU"
+  },
+  {
+    "content": "And one more for good measure:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_017jdViFYanLHg4YDBXytfLQ",
+        "type": "function",
+        "function": {
+          "arguments": "{}",
+          "name": "love_quote_for_olato_quotes"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "love_quote_for_olato_quotes",
+    "content": "{\"error\": \"\", \"response\": \"{'quote': 'The best thing to hold onto in life is each other. -Audrey Hepburn'}\"}",
+    "tool_call_id": "toolu_017jdViFYanLHg4YDBXytfLQ"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_018Z7myzP62JyQ5yVuev7Jnt",
+        "type": "function",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"Here are three inspiring quotes to start your day:\\n\\n1. Motivation Quote: \\\"The future belongs to those who believe in the beauty of their dreams.\\\" - Eleanor Roosevelt\\n\\n2. Success Quote: \\\"Success is walking from failure to failure with no loss of enthusiasm.\\\" - Winston Churchill\\n\\n3. Love Quote: \\\"The best thing to hold onto in life is each other.\\\" - Audrey Hepburn\\n\\nI hope these quotes provide you with some inspiration and positive energy to begin your day!\"}",
+          "name": "Finish"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "toolu_018Z7myzP62JyQ5yVuev7Jnt"
+  }
+]

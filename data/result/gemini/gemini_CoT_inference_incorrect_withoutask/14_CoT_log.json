@@ -1,0 +1,56 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.youtube_v3_v2: Get youtube data without any youtube data api key\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI'm planning a family movie night and I need to create a playlist of animated movies on YouTube. Can you fetch the videos from a playlist with the ID 'ASLpZt3vCjQVX'? It would be helpful to have the details and comments for each video.\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_26e1164862d64c26b30af4e99a672d41",
+        "function": {
+          "arguments": "{\"part\":\"snippet,contentDetails\",\"playlistid\":\"ASLpZt3vCjQVX\"}",
+          "name": "playlist_videos_for_youtube_v3_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "name": "playlist_videos_for_youtube_v3_v2",
+    "content": "The tool output is {\"error\": \"Message error...\", \"response\": \"{'error': {'code': 404, 'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'errors': [{'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'domain': 'youtube.playlistItem', 'reason': 'playlistNotFound', 'location': 'playlistId', 'locationType': 'parameter'}]}}\"}, remember to call Finish tool when either if you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+    "tool_call_id": "call_26e1164862d64c26b30af4e99a672d41"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_44c2dc79b2a348bf8c0093a1e10f356c",
+        "function": {
+          "arguments": "{\"return_type\":\"give_up_and_restart\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"chose to give up and restart\"}",
+    "tool_call_id": "call_44c2dc79b2a348bf8c0093a1e10f356c"
+  }
+]

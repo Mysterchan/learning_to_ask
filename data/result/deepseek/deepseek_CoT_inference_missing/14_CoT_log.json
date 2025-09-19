@@ -1,0 +1,126 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.trackingmore_v2: All-in-one global package tracking tool. Support track and trace international 472 couriers.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nCan you provide me with the carrier details of my package?\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please provide the tracking number of your package? This will help me identify the carrier and provide you with the necessary details.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "'NY323068998GB' is my tracking number"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_4773af8f-83c3-4e1a-9820-c21bffd63b62",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}",
+    "tool_call_id": "call_0_4773af8f-83c3-4e1a-9820-c21bffd63b62"
+  },
+  {
+    "content": "\u0e09\u0e31\u0e19\u0e08\u0e30\u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e41\u0e25\u0e30\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e01\u0e32\u0e23\u0e15\u0e48\u0e2d\u0e44\u0e1b\u0e14\u0e49\u0e27\u0e22\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e32\u0e21\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07\u0e02\u0e2d\u0e07\u0e41\u0e1e\u0e04\u0e40\u0e01\u0e08\u0e19\u0e35\u0e49\n\n### Thought\nI have identified the possible carriers for the tracking number 'NY323068998GB' as Royal Mail and UBI Logistics. To proceed, I will track the package using the identified carriers to provide the latest tracking information.\n\n### Action\nI will first try tracking the package with Royal Mail.\n\n### Function\n```json\n{\"name\": \"packages_v2_track_for_trackingmore_v2\", \"parameters\": {\"trackingnumber\": \"NY323068998GB\"}}\n```<\uff5ctool\u2581call\u2581end\uff5c><\uff5ctool\u2581calls\u2581end\uff5c>",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_bb06355c-87d4-4088-8eef-70c0f0b45b43",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"Timeout error...HTTPConnectionPool(host='8.130.32.149', port=8080): Read timed out. (read timeout=30)\", \"response\": \"\"}",
+    "tool_call_id": "call_0_bb06355c-87d4-4088-8eef-70c0f0b45b43"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_5013980d-8097-48c1-9e7a-759747f95d02",
+        "function": {
+          "arguments": "{\"carriercode\": \"royal-mail\", \"trackingnumber\": \"NY323068998GB\", \"lang\": \"en\"}",
+          "name": "packages_track_deprecated_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_track_deprecated_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"\"}",
+    "tool_call_id": "call_0_5013980d-8097-48c1-9e7a-759747f95d02"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_cb7b62bd-b764-4496-b5b0-e03dd8a0e207",
+        "function": {
+          "arguments": "{\"return_type\": \"give_up_and_restart\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"chose to give up and restart\"}",
+    "tool_call_id": "call_0_cb7b62bd-b764-4496-b5b0-e03dd8a0e207"
+  }
+]

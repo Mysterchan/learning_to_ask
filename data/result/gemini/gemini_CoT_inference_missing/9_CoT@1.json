@@ -1,0 +1,204 @@
+{
+  "win": false,
+  "ask_corresponding_question": true,
+  "redundant_ask_count": 0,
+  "try_count": 1,
+  "trys": [
+    {
+      "chain": [
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 1,
+          "node_type": "Seeking",
+          "description": "Question: To analyze your TikTok video engagement, I need your TikTok username.  Please provide it.\n",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 2,
+          "node_type": "Action",
+          "description": "user_s_videos_for_tiktok_api",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 3,
+          "node_type": "Action Input",
+          "description": "{\"username\":\"7097255034731138310\"}",
+          "Elo": 1000.0,
+          "observation": "{\"error\": \"\", \"response\": \"{'detail': 'Videos for 7097255034731138310 not found'}\"}",
+          "observation_code": 0,
+          "child_count": 1,
+          "expand_num": 0,
+          "io_state": {}
+        },
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 4,
+          "node_type": "Action",
+          "description": "Finish",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0
+        },
+        {
+          "is_terminal": false,
+          "pruned": true,
+          "finished": false,
+          "depth": 5,
+          "node_type": "Action Input",
+          "description": "{\"return_type\":\"give_up_and_restart\"}",
+          "Elo": 1000.0,
+          "observation": "{\"response\":\"chose to give up and restart\"}",
+          "observation_code": 4,
+          "child_count": 0,
+          "expand_num": 0,
+          "io_state": {}
+        }
+      ],
+      "win": false
+    }
+  ],
+  "compare_candidates": [],
+  "forward_args": {
+    "single_chain_max_step": 12,
+    "pass_at": 1,
+    "answer": 1,
+    "query_id": 9,
+    "output_dir_path": "C:\\Users\\User\\Desktop\\learning_to_ask_v2\\code_and_data\\toolbench\\new_result\\gemini\\gemini_CoT_inference_missing"
+  },
+  "answer_generation": {
+    "valid_data": false,
+    "final_answer": "",
+    "function": [
+      {
+        "name": "video_details_for_tiktok_api",
+        "description": "This is the subfunction for tool \"tiktok_api\", you can use this tool.The description of this function is: \"Return video_details_for_tiktok_api\"",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "collection_videos_details_for_tiktok_api",
+        "description": "This is the subfunction for tool \"tiktok_api\", you can use this tool.The description of this function is: \"Return a collection details and videos\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "collection_id": {
+              "type": "string",
+              "description": ""
+            },
+            "username": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": [
+            "collection_id",
+            "username"
+          ]
+        }
+      },
+      {
+        "name": "user_s_videos_continuation_for_tiktok_api",
+        "description": "This is the subfunction for tool \"tiktok_api\", you can use this tool.The description of this function is: \"Return the next list of  User Videos\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "continuation_token": {
+              "type": "string",
+              "description": ""
+            },
+            "username": {
+              "type": "string",
+              "description": ""
+            },
+            "secondary_id": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": [
+            "continuation_token",
+            "username",
+            "secondary_id"
+          ]
+        }
+      },
+      {
+        "name": "user_s_videos_for_tiktok_api",
+        "description": "This is the subfunction for tool \"tiktok_api\", you can use this tool.The description of this function is: \"Return User Videos\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      },
+      {
+        "name": "search_videos_for_tiktok_api",
+        "description": "This is the subfunction for tool \"tiktok_api\", you can use this tool.The description of this function is: \"Return Search Result\"",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": ""
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      },
+      {
+        "name": "Finish",
+        "description": "If you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "return_type": {
+              "type": "string",
+              "enum": [
+                "give_answer",
+                "give_up_and_restart"
+              ]
+            },
+            "final_answer": {
+              "type": "string",
+              "description": "The final answer you want to give the user. You should have this field if \"return_type\"==\"give_answer\""
+            }
+          },
+          "required": [
+            "return_type"
+          ]
+        }
+      }
+    ],
+    "query_count": 2,
+    "total_tokens": 1146,
+    "train_messages": [],
+    "chain": [],
+    "query": "I'm a content creator and I want to analyze the engagement on my TikTok videos, please provide me with the details of the video."
+  }
+}

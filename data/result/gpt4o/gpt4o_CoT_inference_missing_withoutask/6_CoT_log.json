@@ -1,0 +1,68 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate and I am looking for nodejs developer as my first job. Can you help me to look for the salary of a nodejs developer?\nBegin!\n"
+  },
+  {
+    "content": "To help find the average salary for a Node.js developer job, I need to know your location. Where do you want me to check? Additionally, I can look at different locations if you prefer a remote job. Let me know!",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "New York"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_qPoXiuB2A5YfcYSuPLmpJXDk",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"Node.js developer\"}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'b62ad3c0-45b1-4eae-b207-35751d34c42c', 'parameters': {'job_title': 'node.js developer', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York City, NY', 'job_title': 'Node Js Developer', 'min_salary': 98070.64, 'max_salary': 165032.82, 'median_salary': 126559.35, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Node%20Js%20Developer&locT=C&locId=1132348', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "call_qPoXiuB2A5YfcYSuPLmpJXDk"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_Qdzt5o9TYqpLXiBIBE8X9Kve",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"As a Node.js Developer in New York City, the salary is estimated to range from $98,071 to $165,033 per year, with a median salary of $126,559 per year. This information is sourced from Glassdoor. Let me know if you'd like me to assist with anything else!\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_Qdzt5o9TYqpLXiBIBE8X9Kve"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "role": "user",
+    "content": "\nI have a package with the tracking number .YT9999999999 Can you track this package and give me the tracking information? Additionally, detect the carrier for this tracking number.\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you confirm the correctness of the tracking number? It seems there is an extra \".\" at the beginning, and I need the exact tracking number to proceed.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is YT2003521266065328"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_cK6NCObxJ39fpd4QqBTCiDYI",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"YT2003521266065328\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Yun Express', 'code': 'yunexpress'}]}\"}",
+    "tool_call_id": "call_cK6NCObxJ39fpd4QqBTCiDYI"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_64cRqdqwXmYkzukyD5DoyekD",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"YT2003521266065328\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'originCountryData': {'stausDataNum': 1, 'substatus': 'notfound002', 'destinationcountryname': '', 'itemTimeLength': None, 'infoState': 3, 'phonenum': '4000-2621-26', 'weblink': 'http://www.yunexpress.com/'}, 'destinationCountryData': [], 'costTimeData': {'carrier_code': 'yunexpress', 'original': '', 'destination': '', 'total': 0, 'delivered': 0, 'range1': 0, 'range3': 0, 'range4': 0, 'range5': 0, 'range6': 0, 'day': 0}, 'lastEvent': '', 'expressType': 'express', 'stausDataNum': 1, 'function': 2, 'itemkey': 'DqCJiHaGSfVTJ'}\"}",
+    "tool_call_id": "call_64cRqdqwXmYkzukyD5DoyekD"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_WGA4aZN4R6m7UTSLzyCTiqr5",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The tracking number YT2003521266065328 is associated with Yun Express. However, no detailed tracking events were found for this package at the moment.\\n\\nThe carrier\u2019s website is [Yun Express](http://www.yunexpress.com/), and their contact number is 4000-2621-26 for further assistance if needed.\\n\\nLet me know if there's anything more I can assist you with.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_WGA4aZN4R6m7UTSLzyCTiqr5"
+  }
+]

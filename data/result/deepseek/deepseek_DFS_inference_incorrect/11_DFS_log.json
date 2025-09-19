@@ -1,0 +1,66 @@
+[
+  {
+    "role": "user",
+    "content": "\nI need to verify the validity of an email address. The email address I want to verify is testing.com\nBegin!\n"
+  },
+  {
+    "content": "Question: The email address you provided, \"testing.com\", appears to be incomplete. Could you please provide the full email address you wish to verify? For example, \"example@testing.com\".",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is test@gmail.com"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_01aecc3b-e80c-4427-9224-a40de99febf8",
+        "function": {
+          "arguments": "{\"email\":\"test@gmail.com\"}",
+          "name": "validate_email_for_validate_email"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "validate_email_for_validate_email",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 200, 'message': 'Success', 'result': [{'email': 'test@gmail.com', 'isValid': True, 'username': 'test', 'domain': 'gmail.com', 'regex_validation': {'value': True}, 'typo_validation': {'value': True}, 'disposable_validation': {'value': True}, 'mx_validation': {'value': True}, 'smtp_validation': {'value': True}}]}\"}",
+    "tool_call_id": "call_0_01aecc3b-e80c-4427-9224-a40de99febf8"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_cd741bce-93f3-490b-8eb3-5ffe28ecc4fe",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The email address test@gmail.com is valid. The validation results are as follows:\\n- Regex Validation: True\\n- Typo Validation: True\\n- Disposable Validation: True\\n- MX Validation: True\\n- SMTP Validation: True\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_cd741bce-93f3-490b-8eb3-5ffe28ecc4fe"
+  }
+]

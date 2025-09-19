@@ -1,0 +1,64 @@
+[
+  {
+    "role": "user",
+    "content": "\nI need to verify the validity of an email address. The email address I want to verify is testing.com\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please confirm the exact email address? \"testing.com\" appears to be a domain, not a complete email address (e.g., user@testing.com). A valid email format is required for the verification.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is test@gmail.com"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_eII3vUkyvJQ9IRxnJcaFwljl",
+        "function": {
+          "arguments": "{\"email\":\"test@gmail.com\"}",
+          "name": "validate_email_for_validate_email"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "validate_email_for_validate_email",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 200, 'message': 'Success', 'result': [{'email': 'test@gmail.com', 'isValid': True, 'username': 'test', 'domain': 'gmail.com', 'regex_validation': {'value': True}, 'typo_validation': {'value': True}, 'disposable_validation': {'value': True}, 'mx_validation': {'value': True}, 'smtp_validation': {'value': True}}]}\"}",
+    "tool_call_id": "call_eII3vUkyvJQ9IRxnJcaFwljl"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_yAPW52T88YZfqC6PEVNX4jIr",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The email address \\\"test@gmail.com\\\" is valid. It successfully passed all major checks, including regex validation, typo validation, disposable email test, MX record test, and SMTP test.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_yAPW52T88YZfqC6PEVNX4jIr"
+  }
+]

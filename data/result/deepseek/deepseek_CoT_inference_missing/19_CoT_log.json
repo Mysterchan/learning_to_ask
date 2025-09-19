@@ -1,0 +1,427 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.realtor_api_for_real_estate_data: Data API for Realtor USAYou can use this API to get all the Realtor Property data, Realtor Agents data and Realtor School data.Currently it is from Realtor USA only.Contact me at: vuesdata@gmail.com or visit https://www.vuesdata.com for building custom spiders or custom requests.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI'm interested in buying a property. Could you provide me with a list of available properties including their details like address, listing price, square footage, number of bedrooms, and bathrooms?\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please specify the city and state where you are interested in buying a property? Additionally, do you have a specific page number or offset in mind for the property list?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "San Jose"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_5e8b09eb-c0be-4a35-8a1f-58eabbeea574",
+        "function": {
+          "arguments": "{\"offset\": \"0\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Intero Real Estate Services', 'photo': None, 'type': 'Office'}], 'last_update_date': '2023-06-19T10:01:32Z', 'list_date': '2022-12-14T01:22:37Z', 'list_price': 190000, 'listing_id': '2950693653', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.416934, 'lon': -121.961173}, 'line': '464 Eucalyptus Dr Unit 464', 'postal_code': '95134', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=464%20Eucalyptus%20Dr%20Unit%20464%2C%20San%20Jose%2C%20CA%2095134&size=640x480&source=outdoor&signature=yw-64vmJw_-THNwCjpgS1uLEKRg='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2950693653', 'listing_key': None, 'primary': True, 'status': 'for_sale'}, {'listing_id': '2914153358', 'listing_key': None,...",
+    "tool_call_id": "call_0_5e8b09eb-c0be-4a35-8a1f-58eabbeea574"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_1602606c-c0fc-458a-8517-1444488a2c3f",
+        "function": {
+          "arguments": "{\"offset\": \"10\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Kw Silicon City', 'photo': None, 'type': 'Office'}], 'last_update_date': '2023-07-10T06:43:17Z', 'list_date': '2023-07-10T13:43:55Z', 'list_price': 1925000, 'listing_id': '2957532479', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.303899, 'lon': -121.924329}, 'line': '1840 Sw Expy', 'postal_code': '95126', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1840%20Sw%20Expy%2C%20San%20Jose%2C%20CA%2095126&size=640x480&source=outdoor&signature=1DjrN3ftUi8d0Vlkd5GjpIOCsMg='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2957532479', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/1840-Southwest-Expy_San-Jo...",
+    "tool_call_id": "call_0_1602606c-c0fc-458a-8517-1444488a2c3f"
+  },
+  {
+    "content": "\u76ee\u524d\uff0c\u6211\u5df2\u7ecf\u83b7\u53d6\u4e86San Jose, CA\u7684\u623f\u4ea7\u5217\u8868\u7684\u524d20\u4e2a\u7ed3\u679c\u3002\u6bcf\u4e2a\u623f\u4ea7\u7684\u4fe1\u606f\u5305\u62ec\u5730\u5740\u3001\u6302\u724c\u4ef7\u683c\u3001\u6700\u540e\u66f4\u65b0\u65e5\u671f\u3001\u4e0a\u5e02\u65e5\u671f\u3001\u6302\u724cID\u3001\u4f4d\u7f6e\u4fe1\u606f\uff08\u5305\u62ec\u57ce\u5e02\u3001\u5750\u6807\u3001\u8857\u9053\u3001\u90ae\u653f\u7f16\u7801\u3001\u5dde\u3001\u5dde\u4ee3\u7801\uff09\u3001\u53bf\u4fe1\u606f\u3001\u8857\u666fURL\u3001\u5f00\u653e\u65e5\u63cf\u8ff0\u3001\u5176\u4ed6\u6302\u724c\u4fe1\u606f\u3001\u54c1\u724c\u4fe1\u606f\u3001\u4ee3\u7406\u5546\u4fe1\u606f\u7b49\u3002\n\n\u4e3a\u4e86\u63d0\u4f9b\u66f4\u8be6\u7ec6\u7684\u4fe1\u606f\uff0c\u6211\u5c06\u7ee7\u7eed\u83b7\u53d6\u66f4\u591a\u7684\u623f\u4ea7\u5217\u8868\u3002\u63a5\u4e0b\u6765\uff0c\u6211\u5c06\u83b7\u53d6\u504f\u79fb\u91cf\u4e3a20\u7684\u623f\u4ea7\u5217\u8868\u3002",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_4462d528-0015-41bf-b5c2-d5db793f7802",
+        "function": {
+          "arguments": "{\"offset\": \"20\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Realty World-Todd Su & Company', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-03T12:27:29Z', 'list_date': '2024-12-12T00:32:54.000000Z', 'list_price': 259900, 'listing_id': '2976277104', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.289963, 'lon': -121.873421}, 'line': '726 Millstream Dr Unit 726', 'postal_code': '95125', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=726%20Millstream%20Dr%20Unit%20726%2C%20San%20Jose%2C%20CA%2095125&size=640x480&source=outdoor&signature=vJh9HgQ0WcEg5G03v9fvzfP7oYk='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2976277104', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com...",
+    "tool_call_id": "call_0_4462d528-0015-41bf-b5c2-d5db793f7802"
+  },
+  {
+    "content": "\u76ee\u524d\uff0c\u6211\u5df2\u7ecf\u83b7\u53d6\u4e86San Jose, CA\u7684\u623f\u4ea7\u5217\u8868\u7684\u524d30\u4e2a\u7ed3\u679c\u3002\u6bcf\u4e2a\u623f\u4ea7\u7684\u4fe1\u606f\u5305\u62ec\u5730\u5740\u3001\u6302\u724c\u4ef7\u683c\u3001\u6700\u540e\u66f4\u65b0\u65e5\u671f\u3001\u4e0a\u5e02\u65e5\u671f\u3001\u6302\u724cID\u3001\u4f4d\u7f6e\u4fe1\u606f\uff08\u5305\u62ec\u57ce\u5e02\u3001\u5750\u6807\u3001\u8857\u9053\u3001\u90ae\u653f\u7f16\u7801\u3001\u5dde\u3001\u5dde\u4ee3\u7801\uff09\u3001\u53bf\u4fe1\u606f\u3001\u8857\u666fURL\u3001\u5f00\u653e\u65e5\u63cf\u8ff0\u3001\u5176\u4ed6\u6302\u724c\u4fe1\u606f\u3001\u54c1\u724c\u4fe1\u606f\u3001\u4ee3\u7406\u5546\u4fe1\u606f\u7b49\u3002\n\n\u4e3a\u4e86\u63d0\u4f9b\u66f4\u8be6\u7ec6\u7684\u4fe1\u606f\uff0c\u6211\u5c06\u7ee7\u7eed\u83b7\u53d6\u66f4\u591a\u7684\u623f\u4ea7\u5217\u8868\u3002\u63a5\u4e0b\u6765\uff0c\u6211\u5c06\u83b7\u53d6\u504f\u79fb\u91cf\u4e3a30\u7684\u623f\u4ea7\u5217\u8868\u3002",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_1bac50a5-2072-49da-9a98-028d4037c9ba",
+        "function": {
+          "arguments": "{\"offset\": \"30\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': 'No Agent Available', 'branding': [{'name': 'Tri Pointe Homes', 'photo': 'https://nh.rdcpix.com/d487fd4560836c3eb3aca3cac6fc0f0en-f3417508243s.jpg', 'type': 'Builder'}], 'last_update_date': '2024-10-16', 'list_date': '2024-12-25T00:49:52.000000Z', 'list_price': 1150900, 'listing_id': None, 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.241742, 'lon': -121.786397}, 'line': '5972 Quantum Loop', 'postal_code': '95119', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=5972%20Quantum%20Loop%2C%20San%20Jose%2C%20CA%2095119&size=640x480&source=outdoor&signature=AVj2IgicNFv9Z8f2P2XOGvMgHxo='}, 'open_house_description': 'No Open House Available', 'other_listings': None, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/Plan-6_Lotus-at-UrbanOak_5972-Quantum-Loop_San-Jose_C...",
+    "tool_call_id": "call_0_1bac50a5-2072-49da-9a98-028d4037c9ba"
+  },
+  {
+    "content": "\u76ee\u524d\uff0c\u6211\u5df2\u7ecf\u83b7\u53d6\u4e86San Jose, CA\u7684\u623f\u4ea7\u5217\u8868\u7684\u524d40\u4e2a\u7ed3\u679c\u3002\u6bcf\u4e2a\u623f\u4ea7\u7684\u4fe1\u606f\u5305\u62ec\u5730\u5740\u3001\u6302\u724c\u4ef7\u683c\u3001\u6700\u540e\u66f4\u65b0\u65e5\u671f\u3001\u4e0a\u5e02\u65e5\u671f\u3001\u6302\u724cID\u3001\u4f4d\u7f6e\u4fe1\u606f\uff08\u5305\u62ec\u57ce\u5e02\u3001\u5750\u6807\u3001\u8857\u9053\u3001\u90ae\u653f\u7f16\u7801\u3001\u5dde\u3001\u5dde\u4ee3\u7801\uff09\u3001\u53bf\u4fe1\u606f\u3001\u8857\u666fURL\u3001\u5f00\u653e\u65e5\u63cf\u8ff0\u3001\u5176\u4ed6\u6302\u724c\u4fe1\u606f\u3001\u54c1\u724c\u4fe1\u606f\u3001\u4ee3\u7406\u5546\u4fe1\u606f\u7b49\u3002\n\n\u4e3a\u4e86\u63d0\u4f9b\u66f4\u8be6\u7ec6\u7684\u4fe1\u606f\uff0c\u6211\u5c06\u7ee7\u7eed\u83b7\u53d6\u66f4\u591a\u7684\u623f\u4ea7\u5217\u8868\u3002\u63a5\u4e0b\u6765\uff0c\u6211\u5c06\u83b7\u53d6\u504f\u79fb\u91cf\u4e3a40\u7684\u623f\u4ea7\u5217\u8868\u3002",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_bf6db9b5-6e9c-442d-b013-4d84ae67722e",
+        "function": {
+          "arguments": "{\"offset\": \"40\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 0
+      },
+      {
+        "id": "call_1_404d1b61-19f2-4c13-abe9-f86a002b153c",
+        "function": {
+          "arguments": "{\"offset\": \"50\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 1
+      },
+      {
+        "id": "call_2_1cc1c1e3-d030-4e68-b67d-b86550c590ab",
+        "function": {
+          "arguments": "{\"offset\": \"60\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 2
+      },
+      {
+        "id": "call_3_0a9211a4-80a6-4c4f-9d64-988121815ac1",
+        "function": {
+          "arguments": "{\"offset\": \"70\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 3
+      },
+      {
+        "id": "call_4_33b6b7a2-dc4b-47de-9c62-05ea5c178962",
+        "function": {
+          "arguments": "{\"offset\": \"80\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 4
+      },
+      {
+        "id": "call_5_7fae482d-b16f-4acc-aee1-59123bc46c70",
+        "function": {
+          "arguments": "{\"offset\": \"90\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 5
+      },
+      {
+        "id": "call_6_ac597817-7b89-4da8-8110-96d9dbebbd16",
+        "function": {
+          "arguments": "{\"offset\": \"100\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 6
+      },
+      {
+        "id": "call_7_db13180e-ce35-4e2e-aebe-fe50b359c875",
+        "function": {
+          "arguments": "{\"offset\": \"110\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 7
+      },
+      {
+        "id": "call_8_ae94389c-2cd5-4881-bef8-05dddb4c5f76",
+        "function": {
+          "arguments": "{\"offset\": \"120\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 8
+      },
+      {
+        "id": "call_9_1a77d41a-da41-4e3c-bc3e-6b442a6b4e09",
+        "function": {
+          "arguments": "{\"offset\": \"130\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 9
+      },
+      {
+        "id": "call_10_a8fe134c-1acd-4b99-b02f-d49727d32b5c",
+        "function": {
+          "arguments": "{\"offset\": \"140\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 10
+      },
+      {
+        "id": "call_11_9679b93c-44a0-471a-b889-0fb5b54e2035",
+        "function": {
+          "arguments": "{\"offset\": \"150\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 11
+      },
+      {
+        "id": "call_12_e0fbaf4c-dda7-48c3-82b6-df0327c11b0a",
+        "function": {
+          "arguments": "{\"offset\": \"160\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 12
+      },
+      {
+        "id": "call_13_df566ada-bfa0-40de-ac05-7d0c2cc40562",
+        "function": {
+          "arguments": "{\"offset\": \"170\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 13
+      },
+      {
+        "id": "call_14_071eaed3-6add-4afb-95f5-b5fb86638c39",
+        "function": {
+          "arguments": "{\"offset\": \"180\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 14
+      },
+      {
+        "id": "call_15_d6472edd-251f-44cc-ab7d-217e5aac73f3",
+        "function": {
+          "arguments": "{\"offset\": \"190\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 15
+      },
+      {
+        "id": "call_16_fafda253-7a09-401f-919e-10a81131009a",
+        "function": {
+          "arguments": "{\"offset\": \"200\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 16
+      },
+      {
+        "id": "call_17_0cd4139e-e7fc-4310-95bd-d16b9f664e94",
+        "function": {
+          "arguments": "{\"offset\": \"210\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 17
+      },
+      {
+        "id": "call_18_2b0b456a-050a-497e-b032-b7c8381bc9b4",
+        "function": {
+          "arguments": "{\"offset\": \"220\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 18
+      },
+      {
+        "id": "call_19_4d322e2c-9e7c-47d9-b1a6-7cb718098d11",
+        "function": {
+          "arguments": "{\"offset\": \"230\", \"city\": \"San Jose\", \"state_code\": \"CA\"}",
+          "name": "realtorpropertylist_for_realtor_api_for_real_estate_data"
+        },
+        "type": "function",
+        "index": 19
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Intero Real Estate Services', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-11T14:42:21Z', 'list_date': '2025-01-11T19:34:50.000000Z', 'list_price': 2998000, 'listing_id': '2977119623', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.304403, 'lon': -121.77358}, 'line': '4602 Middle Park Dr', 'postal_code': '95135', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=4602%20Middle%20Park%20Dr%2C%20San%20Jose%2C%20CA%2095135&size=640x480&source=outdoor&signature=oGLaM9K7gc07sC3hekymqdBVMR8='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '29771...",
+    "tool_call_id": "call_0_bf6db9b5-6e9c-442d-b013-4d84ae67722e"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': 'No Agent Available', 'branding': [{'name': 'Tri Pointe Homes', 'photo': 'https://nh.rdcpix.com/d487fd4560836c3eb3aca3cac6fc0f0en-f3417508243s.jpg', 'type': 'Builder'}], 'last_update_date': '2024-10-16', 'list_date': '2024-12-25T00:49:52.000000Z', 'list_price': 1002900, 'listing_id': None, 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.241742, 'lon': -121.786397}, 'line': '5972 Quantum Loop', 'postal_code': '95119', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=5972%20Quantum%20Loop%2C%20San%20Jose%2C%20CA%2095119&size=640x480&source=outdoor&signature=AVj2IgicNFv9Z8f2P2XOGvMgHxo='}, 'open_house_description': 'No Open House Available', 'other_listings': None, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/Plan-1_Lotus-at-UrbanOak_5972-Quantum-Loop_San-Jose_C...",
+    "tool_call_id": "call_1_404d1b61-19f2-4c13-abe9-f86a002b153c"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Keller Williams Realty - Cupertino', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-14T16:42:39Z', 'list_date': '2025-01-09T01:24:03.000000Z', 'list_price': 599888, 'listing_id': '2977010483', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.322623, 'lon': -121.916646}, 'line': '346 S Willard Ave', 'postal_code': '95126', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=346%20S%20Willard%20Ave%2C%20San%20Jose%2C%20CA%2095126&size=640x480&source=outdoor&signature=BEyVD9Hm2l3Gv26j72BRR1GV5P0='}, 'open_house_description': {'description': 'Move in ready, 2 bed / 2.5 bath, close to San Jose Downtown.', 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:30:00', 'time_zo...",
+    "tool_call_id": "call_2_1cc1c1e3-d030-4e68-b67d-b86550c590ab"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': 'No Agent Available', 'branding': [{'name': 'Pulte Homes', 'photo': 'https://nh.rdcpix.com/3fc9a9063f24fc1c21132963118394d6n-f745573952s.jpg', 'type': 'Builder'}], 'last_update_date': '2024-11-17', 'list_date': '2025-01-02T00:04:52.000000Z', 'list_price': 1334990, 'listing_id': None, 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.317779, 'lon': -121.953816}, 'line': '3163 Amaranth Drive', 'postal_code': '95117', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=3163%20Amaranth%20Drive%2C%20San%20Jose%2C%20CA%2095117&size=640x480&source=outdoor&signature=tvP7AafTp_DmQqHlKlptDTBFiX8='}, 'open_house_description': 'No Open House Available', 'other_listings': None, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/Plan-3_Avenue-at-Central_3163-Amaranth-Drive_San-Jose_C...",
+    "tool_call_id": "call_3_0a9211a4-80a6-4c4f-9d64-988121815ac1"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'United Realty Group', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-18T16:03:11Z', 'list_date': '2025-01-17T20:04:14.000000Z', 'list_price': 1198888, 'listing_id': '2977366501', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.292577, 'lon': -121.843069}, 'line': '244 Water Chestnut Ct', 'postal_code': '95111', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=244%20Water%20Chestnut%20Ct%2C%20San%20Jose%2C%20CA%2095111&size=640x480&source=outdoor&signature=0gfDA07lOuHgGeMHCYG7McdO8xk='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '29773665...",
+    "tool_call_id": "call_4_33b6b7a2-dc4b-47de-9c62-05ea5c178962"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': 'VFlight Real Estate'}], 'branding': [{'name': 'VFlight Real Estate', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-17T20:03:13Z', 'list_date': '2025-01-18T03:56:24.000000Z', 'list_price': 1590000, 'listing_id': '2977382730', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.203019, 'lon': -121.839041}, 'line': '1082 Almaden Village Ln', 'postal_code': '95120', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1082%20Almaden%20Village%20Ln%2C%20San%20Jose%2C%20CA%2095120&size=640x480&source=outdoor&signature=vAfswGBoga8YyAb9Eq1rha5SX-o='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'l...",
+    "tool_call_id": "call_5_7fae482d-b16f-4acc-aee1-59123bc46c70"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Kw Bay Area Estates', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-16T17:27:42Z', 'list_date': '2025-01-16T20:55:54.000000Z', 'list_price': 1025000, 'listing_id': '2977322987', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.291259, 'lon': -121.755209}, 'line': '4015 Wimbledon Ct', 'postal_code': '95135', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=4015%20Wimbledon%20Ct%2C%20San%20Jose%2C%20CA%2095135&size=640x480&source=outdoor&signature=7Y8S2SUlOFfGb6Q-JIJKAS3LmfY='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2977322987', 'listing_key': None, 'primary': True, 'status': 'for_sale'}, {'listing_id': '2953393604', 'listing_key': None, 'primary': None, 'sta...",
+    "tool_call_id": "call_6_ac597817-7b89-4da8-8110-96d9dbebbd16"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'COMPASS', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-17T13:07:09Z', 'list_date': '2025-01-06T03:43:42.000000Z', 'list_price': 498888, 'listing_id': '2976895011', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.254236, 'lon': -121.823624}, 'line': '5486 Tyhurst Walkway Apt 1', 'postal_code': '95123', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=5486%20Tyhurst%20Walkway%20Apt%201%2C%20San%20Jose%2C%20CA%2095123&size=640x480&source=outdoor&signature=q36rmgYnIfnHJfmOjoLJD6o1LZo='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2976895011', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/realestateandhomes-det...",
+    "tool_call_id": "call_7_db13180e-ce35-4e2e-aebe-fe50b359c875"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Colliers International', 'photo': None, 'type': 'Office'}], 'last_update_date': '2024-12-11T22:09:02Z', 'list_date': '2024-12-11T22:09:28.000000Z', 'list_price': 7000000, 'listing_id': '2976268711', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.342267, 'lon': -121.881283}, 'line': '488 E Saint John St', 'postal_code': '95112', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=488%20E%20Saint%20John%20St%2C%20San%20Jose%2C%20CA%2095112&size=640x480&source=outdoor&signature=D7LU0fmbaPwK2rbi3WTfx8lnZA4='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2976268711', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/realestateandhomes-d...",
+    "tool_call_id": "call_8_ae94389c-2cd5-4881-bef8-05dddb4c5f76"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'John Awbrey, Broker', 'photo': None, 'type': 'Office'}], 'last_update_date': '2024-12-31T15:43:19Z', 'list_date': '2024-02-15T22:46:49.000000Z', 'list_price': 4999000, 'listing_id': '2964157207', 'location': {'address': {'city': 'San Jose', 'coordinate': None, 'line': 'Menker Ave', 'postal_code': '95128', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': None, 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=Menker%20Ave%2C%20San%20Jose%2C%20CA%2095128&size=640x480&source=outdoor&signature=YIfz3ksqpv7C8UgKkOCH1ryY0WM='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2964157207', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/Menker-Ave_San-Jose_CA_95128_M94119-59634', 'photos': [{'h...",
+    "tool_call_id": "call_9_1a77d41a-da41-4e3c-bc3e-6b442a6b4e09"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': 'Intero Real Estate Services'}], 'branding': [{'name': 'Intero Real Estate Services', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-16T11:43:23Z', 'list_date': '2025-01-15T16:52:51.000000Z', 'list_price': 468000, 'listing_id': '2977252935', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.31181, 'lon': -121.878804}, 'line': '216 Stonegate Cir', 'postal_code': '95110', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=216%20Stonegate%20Cir%2C%20San%20Jose%2C%20CA%2095110&size=640x480&source=outdoor&signature=GAiyS5P3MkjEfsfCCQplPD03Zcc='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'l...",
+    "tool_call_id": "call_10_a8fe134c-1acd-4b99-b02f-d49727d32b5c"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Intero Real Estate Services', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-13T19:58:32Z', 'list_date': '2025-01-14T03:53:12.000000Z', 'list_price': 1179000, 'listing_id': '2977202461', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.381596, 'lon': -121.839028}, 'line': '3142 Modred Dr', 'postal_code': '95127', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=3142%20Modred%20Dr%2C%20San%20Jose%2C%20CA%2095127&size=640x480&source=outdoor&signature=M79ukWVGdZhCfCju_OTu02OhTJY='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '2977202461', 'li...",
+    "tool_call_id": "call_11_9679b93c-44a0-471a-b889-0fb5b54e2035"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Alliance Manufactured Homes', 'photo': None, 'type': 'Office'}], 'last_update_date': '2024-11-02T07:57:54Z', 'list_date': '2024-11-02T14:52:30.000000Z', 'list_price': 289000, 'listing_id': '2974457398', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.410656, 'lon': -121.944977}, 'line': '137 El Bosque Dr Unit 137', 'postal_code': '95134', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=137%20El%20Bosque%20Dr%20Unit%20137%2C%20San%20Jose%2C%20CA%2095134&size=640x480&source=outdoor&signature=3Cj2J_jEEECaIAwI7_yxnHdLPw4='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2974457398', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/re...",
+    "tool_call_id": "call_12_e0fbaf4c-dda7-48c3-82b6-df0327c11b0a"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Kw Bay Area Estates', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-14T17:25:10Z', 'list_date': '2025-01-07T21:25:56.000000Z', 'list_price': 987000, 'listing_id': '2976955242', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.245842, 'lon': -121.809224}, 'line': '192 Benbow Ave', 'postal_code': '95123', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=192%20Benbow%20Ave%2C%20San%20Jose%2C%20CA%2095123&size=640x480&source=outdoor&signature=_p0GSr4wB99SStb7ly_lNzwUgLI='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2976955242', 'listing_key': None, 'primary': True, 'status': 'for_sale'}]}, 'permalink': 'https://www.realtor.com/realestateandhomes-detail/192-Benbow-A...",
+    "tool_call_id": "call_13_df566ada-bfa0-40de-ac05-7d0c2cc40562"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Alliance Manufactured Homes', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-18T12:29:20Z', 'list_date': '2024-09-05T17:23:15.000000Z', 'list_price': 399000, 'listing_id': '2971728721', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.262047, 'lon': -121.815979}, 'line': '510 Saddle Brook Dr Spc 285', 'postal_code': '95136', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=510%20Saddle%20Brook%20Dr%20Spc%20285%2C%20San%20Jose%2C%20CA%2095136&size=640x480&source=outdoor&signature=uZ-UVNz-2UWQ2VIvyQMuSv3siHA='}, 'open_house_description': 'No Open House Available', 'other_listings': {'rdc': [{'listing_id': '2971728721', 'listing_key': None, 'primary': True, 'status': 'for_sale'}, {'listing_id': '2965368533', 'listing_...",
+    "tool_call_id": "call_14_071eaed3-6add-4afb-95f5-b5fb86638c39"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Akimax Realty', 'photo': None, 'type': 'Office'}], 'last_update_date': '2024-12-31T16:57:38Z', 'list_date': '2024-12-05T03:37:44.000000Z', 'list_price': 1611000, 'listing_id': '2975813233', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.358809, 'lon': -121.820552}, 'line': '14030 Buckner Dr', 'postal_code': '95127', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=14030%20Buckner%20Dr%2C%20San%20Jose%2C%20CA%2095127&size=640x480&source=outdoor&signature=rmERRxaWjRgekceZDeVnrk0UFjo='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '2975813233', 'listing_key'...",
+    "tool_call_id": "call_15_d6472edd-251f-44cc-ab7d-217e5aac73f3"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Alliance Manufactured Homes', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-07T17:23:50Z', 'list_date': '2024-09-05T20:24:00.000000Z', 'list_price': 479000, 'listing_id': '2971739723', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.417213, 'lon': -121.942818}, 'line': '591 Hermitage St', 'postal_code': '95134', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=591%20Hermitage%20St%2C%20San%20Jose%2C%20CA%2095134&size=640x480&source=outdoor&signature=D4B7HJC9bYZ5kM-IKFUsJwZm2j0='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '2971739723', ...",
+    "tool_call_id": "call_16_fafda253-7a09-401f-919e-10a81131009a"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Alberts Realty', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-14T03:11:48Z', 'list_date': '2024-12-06T09:21:38.000000Z', 'list_price': 940000, 'listing_id': '2975869926', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.360966, 'lon': -121.821572}, 'line': '14080 Jerilyn Dr', 'postal_code': '95127', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=14080%20Jerilyn%20Dr%2C%20San%20Jose%2C%20CA%2095127&size=640x480&source=outdoor&signature=pV-DOsLzEFhV7EhaDQrwBCAOXhs='}, 'open_house_description': {'description': 'Open house hosted by Katya Ceballos with EXP Realty. Only home under 1 M in neighborhood with Pool. Potential conversion of partially upgraded garage into third bedroom. No for sale sign in yard.', 'dst': T...",
+    "tool_call_id": "call_17_0cd4139e-e7fc-4310-95bd-d16b9f664e94"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Upswing Real Estate', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-10T16:55:05Z', 'list_date': '2025-01-11T00:23:00.000000Z', 'list_price': 840000, 'listing_id': '2977099886', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.331913, 'lon': -121.908269}, 'line': '925 The Alameda Unit 101', 'postal_code': '95126', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=925%20The%20Alameda%20Unit%20101%2C%20San%20Jose%2C%20CA%2095126&size=640x480&source=outdoor&signature=_LKlmbuspGCXGIWy6mjoMvg1vOk='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T16:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:30:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'listing_id': '2...",
+    "tool_call_id": "call_18_2b0b456a-050a-497e-b032-b7c8381bc9b4"
+  },
+  {
+    "role": "tool",
+    "name": "realtorpropertylist_for_realtor_api_for_real_estate_data",
+    "content": "{\"error\": \"\", \"response\": \"[{'agent': [{'office_name': None}], 'branding': [{'name': 'Alliance Manufactured Homes', 'photo': None, 'type': 'Office'}], 'last_update_date': '2025-01-16T17:19:55Z', 'list_date': '2024-05-02T13:54:43.000000Z', 'list_price': 419000, 'listing_id': '2966877019', 'location': {'address': {'city': 'San Jose', 'coordinate': {'lat': 37.262047, 'lon': -121.815979}, 'line': '510 Saddle Brook Dr Spc 50', 'postal_code': '95136', 'state': 'California', 'state_code': 'CA'}, 'county': {'fips_code': '06085', 'name': 'Santa Clara'}, 'street_view_url': 'https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=510%20Saddle%20Brook%20Dr%20Spc%2050%2C%20San%20Jose%2C%20CA%2095136&size=640x480&source=outdoor&signature=zM3Zx8iGMt1Q_9mnQJtkDRrk3TI='}, 'open_house_description': {'description': None, 'dst': True, 'end_date': '2025-01-19T15:00:00', 'methods': ['in_person'], 'start_date': '2025-01-19T13:00:00', 'time_zone': 'PST'}, 'other_listings': {'rdc': [{'l...",
+    "tool_call_id": "call_19_4d322e2c-9e7c-47d9-b1a6-7cb718098d11"
+  }
+]

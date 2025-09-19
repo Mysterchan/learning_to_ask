@@ -1,0 +1,90 @@
+[
+  {
+    "role": "user",
+    "content": "\nMy friend is expecting a package. Can you provide me with the carrier details of his package?\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please provide the tracking number of the package your friend is expecting? This will help in identifying the carrier details.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "NY323068998GB"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_23295978-ca9d-4511-b4d7-80177e1449a5",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}",
+    "tool_call_id": "call_0_23295978-ca9d-4511-b4d7-80177e1449a5"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_c19139b1-db0d-4fb5-b257-f744e2dda7a4",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{}\"}",
+    "tool_call_id": "call_0_c19139b1-db0d-4fb5-b257-f744e2dda7a4"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_93d43fea-b23c-46c5-909b-5b4fd4a20c40",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The tracking number NY323068998GB is associated with the following carriers: Royal Mail (royal-mail) and UBI (ubi-logistics). However, no detailed tracking information is available at the moment.\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_93d43fea-b23c-46c5-909b-5b4fd4a20c40"
+  }
+]

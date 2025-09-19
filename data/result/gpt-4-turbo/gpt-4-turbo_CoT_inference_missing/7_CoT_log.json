@@ -1,0 +1,68 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate and looking for jobs in New York. Can you help me to look for the job salary in new york?\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please specify the job title or industry you are interested in for the salary information in New York?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "Nodejs developer"
+  },
+  {
+    "content": "Next, I will utilize the estimated_salary_for_jsearch function to search for the estimated salary of a \"Nodejs Developer\" in New York.\nThe search radius is implicitly set, but we could increase radius size to increase result parameters as optional.\n\nLet's go ahead with that call now.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_gUdqRJSH8PSKYNS9FTFwggra",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"Nodejs Developer\"}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '40a0440e-c58c-4d5d-89a1-58c515dc78eb', 'parameters': {'job_title': 'nodejs developer', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York City, NY', 'job_title': 'Nodejs Developer', 'min_salary': 111384.99, 'max_salary': 184940.45, 'median_salary': 142439.06, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Nodejs%20Developer&locT=C&locId=1132348', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "call_gUdqRJSH8PSKYNS9FTFwggra"
+  },
+  {
+    "content": "For a Nodejs Developer in New York City, the estimated annual salary ranges from $111,384.99 to $184,940.45, with a median salary of $142,439.06. This data is confidently provided and sourced from Glassdoor. For more context, you might find additional resources and salary specifics over at [Glassdoor](https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Nodejs%20Developer&locT=C&locId=1132348).\n\nLet me know if you need further assistance or if there's anything else I can help you with!",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_ghlhKSEFarQ1qf6AF9aDHhvR",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"For a Nodejs Developer in New York City, the estimated annual salary ranges from $111,384.99 to $184,940.45, with a median salary of $142,439.06. This data is confidently provided by Glassdoor. For more details, please visit [Glassdoor](https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Nodejs%20Developer&locT=C&locId=1132348).\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_ghlhKSEFarQ1qf6AF9aDHhvR"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI need to find an engineering-related job in New York. Can you help me by providing a list of job offers in New York?\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_eII3vUkyvJQ9IRxnJcaFwljl",
+        "function": {
+          "arguments": "{\"query\":\"engineering in new york\",\"radius\":20,\"num_pages\":\"1\"}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '863e6007-b715-40a4-aa93-8c6da8fa9727', 'parameters': {'query': 'engineering in new york', 'page': 1, 'num_pages': 1, 'radius': 20, 'country': 'us', 'language': 'en'}, 'data': [{'job_id': 'tYhLynsDxOHH52UHAAAAAA==', 'employer_name': 'New York City', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-AeNZPb9OV9A2CCkKYvw3olB6_G1h5Z8pzzE&s=0', 'employer_website': None, 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'NYC Jobs - NYC.gov', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full-time', 'job_title': 'Deputy Engineer In Charge - Civil Engineer II', 'job_apply_link': 'https://cityjobs.nyc.gov/job/deputy-engineer-in-charge-civil-engineer-ii-in-nyc-all-boros-jid-28651?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options': [{'publisher': 'NYC ...",
+    "tool_call_id": "call_eII3vUkyvJQ9IRxnJcaFwljl"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_yAPW52T88YZfqC6PEVNX4jIr",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"Here is a list of an engineering-related job opportunity in New York:\\n\\n- **Job Title**: Deputy Engineer In Charge - Civil Engineer II\\n  **Company**: New York City  \\n  **Employment Type**: Full-time\\n  **Application Link**: [Deputy Engineer In Charge - Civil Engineer II Apply Now](https://cityjobs.nyc.gov/job/deputy-engineer-in-charge-civil-engineer-ii-in-nyc-all-boros-jid-28651?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\\n\\nPlease let me know if you'd like further assistance or more job listings!\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_yAPW52T88YZfqC6PEVNX4jIr"
+  }
+]

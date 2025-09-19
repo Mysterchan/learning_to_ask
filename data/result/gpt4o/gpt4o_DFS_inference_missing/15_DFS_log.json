@@ -1,0 +1,64 @@
+[
+  {
+    "role": "user",
+    "content": "\nMy friend is expecting a package. Can you provide me with the carrier details of his package?\nBegin!\n"
+  },
+  {
+    "content": "Question: Can you provide the tracking number of your friend's package? I need this information to detect the carrier details.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "NY323068998GB"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_U0fz7IOevWOJW8qK8hQ1fZrt",
+        "function": {
+          "arguments": "{\"trackingnumber\":\"NY323068998GB\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Royal Mail', 'code': 'royal-mail'}, {'name': 'UBI', 'code': 'ubi-logistics'}]}\"}",
+    "tool_call_id": "call_U0fz7IOevWOJW8qK8hQ1fZrt"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_PkHzMMKULpKLB9cpyql1UYMn",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The carrier details for the package with tracking number NY323068998GB could either be Royal Mail (carrier code: royal-mail) or UBI Logistics (carrier code: ubi-logistics).\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_PkHzMMKULpKLB9cpyql1UYMn"
+  }
+]

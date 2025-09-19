@@ -1,0 +1,121 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.trackingmore_v2: All-in-one global package tracking tool. Support track and trace international 472 couriers.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI need to track a package with the tracking number NY9999999990. Can you give me the tracking information of specific package? After finding the tracking information, detect the carrier for this tracking number\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_8bc16a69-e3c2-4ff0-adc4-63198d2b11fd",
+        "function": {
+          "arguments": "{\"trackingnumber\": \"NY9999999990\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      },
+      {
+        "id": "call_1_87598aa2-ac44-49f6-882b-e857a072b0e0",
+        "function": {
+          "arguments": "{\"trackingnumber\": \"NY9999999990\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 1
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{}\"}",
+    "tool_call_id": "call_0_8bc16a69-e3c2-4ff0-adc4-63198d2b11fd"
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Aramex Australia', 'code': 'fastway-au'}, {'name': 'Fastway Ireland', 'code': 'fastway-ie'}]}\"}",
+    "tool_call_id": "call_1_87598aa2-ac44-49f6-882b-e857a072b0e0"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_1a970dc2-1917-4a4c-afab-ff01b1e63d71",
+        "function": {
+          "arguments": "{\"carriercode\": \"fastway-au\", \"trackingnumber\": \"NY9999999990\"}",
+          "name": "packages_track_deprecated_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_track_deprecated_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"\"}",
+    "tool_call_id": "call_0_1a970dc2-1917-4a4c-afab-ff01b1e63d71"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_7b051503-9982-4324-998f-e89fdd594578",
+        "function": {
+          "arguments": "{\"carriercode\": \"fastway-ie\", \"trackingnumber\": \"NY9999999990\"}",
+          "name": "packages_track_deprecated_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_track_deprecated_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"\"}",
+    "tool_call_id": "call_0_7b051503-9982-4324-998f-e89fdd594578"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_01fcbe8e-379f-4f62-bec8-36ad9e82ff2f",
+        "function": {
+          "arguments": "{\"return_type\": \"give_up_and_restart\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"chose to give up and restart\"}",
+    "tool_call_id": "call_0_01fcbe8e-379f-4f62-bec8-36ad9e82ff2f"
+  }
+]

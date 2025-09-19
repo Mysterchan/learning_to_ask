@@ -1,0 +1,99 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.zillow_v2: Access US and CA property data in JSON, CSV, or Excel formats. Search listings, compare zestimate home values, and discover agent details.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nMy family and I are planning to move to a new city. We need help finding rental properties in the area. Can you give us the rent Zestimate and comparable properties? We would also like to see photos for these properties.\nBegin!\n"
+  },
+  {
+    "content": "Question: Could you please provide me with the address or location of the new city where you are planning to move?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "1545 Yale St, Santa Monica, CA 90404"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_qieq8gkm1ZUjIuE8dyiG7jRc",
+        "function": {
+          "arguments": "{\"address\":\"1545 Yale St, Santa Monica, CA 90404\"}",
+          "name": "rent_zestimate_and_comparable_properties_for_zillow_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "rent_zestimate_and_comparable_properties_for_zillow_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'data': {'floorplans': [{'address': {'city': 'Santa Monica', 'state': 'CA', 'street': '1545 Yale St  ', 'zip': '90404'}, 'numBeds': 2, 'numFullBaths': 1.5, 'zestimate': {'rentZestimate': 3625.0, 'rentZestimateRangeHigh': 3951.0, 'rentZestimateRangeLow': 3299.0}, 'zpid': 2110846380}], 'geo': {'lat': 34.03319, 'lon': -118.4685}, 'marketSummary': {'areaName': '90404', 'beds': '2', 'summary': {'availableRentals': 53, 'medianRent': 3500.0, 'monthlyChange': 0.0, 'yearlyChange': -245.0}, 'url': 'https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404'}, 'similarFloorplans': {'boundingBox': {'maxLat': 34.039589091997, 'maxLon': -118.46092029261, 'minLat': 34.0271706, 'minLon': -118.47602003283}, 'floorplans': [{'active': True, 'address': {'street': '1335 Franklin St'}, 'aliasEncoded': '6be3bkea23cn', 'amenities': {'hvac': {'airConditioning': False, 'heating': False}, 'laundry': {'inUnit': False, 'shared': True}, 'parking': {'g...",
+    "tool_call_id": "call_qieq8gkm1ZUjIuE8dyiG7jRc"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_xz8FCWDF9IfNsVlBqw2yTUiR",
+        "function": {
+          "arguments": "{\"zpid\":\"2110846380\"}",
+          "name": "photos_for_zillow_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "photos_for_zillow_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'photos': [{'caption': '', 'mixedSources': {'jpeg': [{'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_192.jpg', 'width': 192}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_384.jpg', 'width': 384}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_576.jpg', 'width': 576}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_768.jpg', 'width': 768}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_960.jpg', 'width': 960}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_1152.jpg', 'width': 1152}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_1344.jpg', 'width': 1344}, {'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_1536.jpg', 'width': 1536}], 'webp': [{'url': 'https://photos.zillowstatic.com/fp/4a08d2c4b87c9334845...",
+    "tool_call_id": "call_xz8FCWDF9IfNsVlBqw2yTUiR"
+  },
+  {
+    "content": "I have found rental property details for 1545 Yale St in Santa Monica, CA 90404. The rent Zestimate for this property is $3,625 with a range between $3,299 and $3,951. There are 53 available rentals in the area with a median rent of $3,500. You can find more details and photos [here](https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404).\n\nAdditionally, you can view photos of the property [here](https://photos.zillowstatic.com/fp/4a08d2c4b87c933484501e56944a1563-cc_ft_192.jpg).",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_REF88zcq13zDIcTfTHMVeV7l",
+        "function": {
+          "arguments": "{\n  \"final_answer\": \"I have found rental property details for 1545 Yale St in Santa Monica, CA 90404. The rent Zestimate for this property is $3,625 with a range between $3,299 and $3,951. There are 53 available rentals in the area with a median rent of $3,500. You can find more details and photos here: [link](https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404).\",\n  \"return_type\": \"give_answer\"\n}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_REF88zcq13zDIcTfTHMVeV7l"
+  }
+]

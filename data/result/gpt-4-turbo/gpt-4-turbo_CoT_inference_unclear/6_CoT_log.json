@@ -1,0 +1,76 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs in London?\nBegin!\n"
+  },
+  {
+    "content": "Question: To clarify, are you looking for job opportunities in New York or in London? And please specify any particular industries or job titles you are interested in.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "I am looking for a teaching job"
+  },
+  {
+    "content": "I need to search for teaching jobs located in London to gather some initial data. I'll include down recent job postings to get an idea of what's available right now.\n\nI will proceed to use the search_for_jsearch function as it perfectly fits the requirements.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_pUDRZsV9h7RVmnQNILvenBjj",
+        "function": {
+          "arguments": "{\"query\":\"teaching job in London\",\"country\":\"GB\",\"date_posted\":\"week\",\"job_titles\":\"teacher,educator\",\"employment_types\":\"FULLTIME\"}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '3a500208-af8d-40f6-b810-ead6f19ffcca', 'parameters': {'query': 'teaching job in london', 'page': 1, 'num_pages': 1, 'date_posted': 'week', 'employment_types': ['FULLTIME'], 'job_titles': ['teacher', 'educator'], 'country': 'gb', 'language': 'en'}, 'data': [{'job_id': 'q-T4zkcpKgWyYChrAAAAAA==', 'employer_name': 'Barclay Primary School', 'employer_logo': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrDiRan9mStxXwuVfdMeG5lpXCSsoHWIUQuGfB&s=0', 'employer_website': 'https://www.barclayprimary.net', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'Teaching Vacancies - GOV.UK', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full\\u2013time', 'job_title': 'Qualified Teachers', 'job_apply_link': 'https://teaching-vacancies.service.gov.uk/jobs/qualified-teachers-3e27bb9d-8d74-419b-a3b2-71d7576e6d29?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=or...",
+    "tool_call_id": "call_pUDRZsV9h7RVmnQNILvenBjj"
+  },
+  {
+    "content": "I found a relevant listing for a qualified teaching position:\n\n- **Job Title**: Qualified Teachers\n- **Employer**: Barclay Primary School\n- **Application Link**: [Apply Here](https://teaching-vacancies.service.gov.uk/jobs/qualified-teachers-3e27bb9d-8d74-419b-a3b2-71d7576e6d29?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\n- **Employer Website**: [Barclay Primary School](https://www.barclayprimary.net)\n- **Job Location**: London\n- **Employment Type**: Full-time\n- **Publisher**: Teaching Vacancies - GOV.UK\n\nI'll finish the task with this information since it accurately reflects the current opportunities for teaching jobs in London specifically suited for your criterion.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_9IVXif9Jd2rVc0itUIu8XM1w",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"Here's a recent teaching job opportunity in London:\\n\\n**Job Title**: Qualified Teachers\\n**Employer**: Barclay Primary School\\n**Application Link**: [Apply Here](https://teaching-vacancies.service.gov.uk/jobs/qualified-teachers-3e27bb9d-8d74-419b-a3b2-71d7576e6d29?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\\n**Employer Website**: [Barclay Primary School](https://www.barclayprimary.net)\\n**Job Location**: London\\n**Employment Type**: Full-time\\n**Publisher**: Teaching Vacancies - GOV.UK\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_9IVXif9Jd2rVc0itUIu8XM1w"
+  }
+]

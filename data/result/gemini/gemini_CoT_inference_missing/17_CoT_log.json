@@ -1,0 +1,126 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.zillow_v2: Access US and CA property data in JSON, CSV, or Excel formats. Search listings, compare zestimate home values, and discover agent details.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nMy family and I are planning to move to a new city. We need help finding rental properties in the area. Can you give us the rent Zestimate and comparable properties? We would also like to see photos for these properties.\nBegin!\n"
+  },
+  {
+    "content": "Question: Which city and state are you planning to move to?  Also, what are your preferences in terms of number of bedrooms, pets, amenities (e.g., parking, laundry), and property type (e.g., house, apartment)?\n",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "1545 Yale St, Santa Monica, CA 90404"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_8cf89e04e5de4aedba03b6b975ad1636",
+        "function": {
+          "arguments": "{\"address\":\"1545 Yale St, Santa Monica, CA 90404\"}",
+          "name": "rent_zestimate_and_comparable_properties_for_zillow_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "name": "rent_zestimate_and_comparable_properties_for_zillow_v2",
+    "content": "The tool output is {\"error\": \"\", \"response\": \"{'data': {'floorplans': [{'address': {'city': 'Santa Monica', 'state': 'CA', 'street': '1545 Yale St  ', 'zip': '90404'}, 'numBeds': 2, 'numFullBaths': 1.5, 'zestimate': {'rentZestimate': 3625.0, 'rentZestimateRangeHigh': 3951.0, 'rentZestimateRangeLow': 3299.0}, 'zpid': 2110846380}], 'geo': {'lat': 34.03319, 'lon': -118.4685}, 'marketSummary': {'areaName': '90404', 'beds': '2', 'summary': {'availableRentals': 53, 'medianRent': 3500.0, 'monthlyChange': 0.0, 'yearlyChange': -245.0}, 'url': 'https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404'}, 'similarFloorplans': {'boundingBox': {'maxLat': 34.039589091997, 'maxLon': -118.46092029261, 'minLat': 34.0271706, 'minLon': -118.47602003283}, 'floorplans': [{'active': True, 'address': {'street': '1335 Franklin St'}, 'aliasEncoded': '6be3bkea23cn', 'amenities': {'hvac': {'airConditioning': False, 'heating': False}, 'laundry': {'inUnit': False, 'shared': True}, 'parking': {'g..., remember to call Finish tool when either if you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+    "tool_call_id": "call_8cf89e04e5de4aedba03b6b975ad1636"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_d891ca3fdc8c4d378f42b72180a35e24",
+        "function": {
+          "arguments": "{\"address\":\"1545 Yale St, Santa Monica, CA 90404\"}",
+          "name": "rent_zestimate_and_comparable_properties_for_zillow_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "name": "rent_zestimate_and_comparable_properties_for_zillow_v2",
+    "content": "The tool output is {\"error\": \"\", \"response\": \"{'data': {'floorplans': [{'address': {'city': 'Santa Monica', 'state': 'CA', 'street': '1545 Yale St  ', 'zip': '90404'}, 'numBeds': 2, 'numFullBaths': 1.5, 'zestimate': {'rentZestimate': 3625.0, 'rentZestimateRangeHigh': 3951.0, 'rentZestimateRangeLow': 3299.0}, 'zpid': 2110846380}], 'geo': {'lat': 34.03319, 'lon': -118.4685}, 'marketSummary': {'areaName': '90404', 'beds': '2', 'summary': {'availableRentals': 53, 'medianRent': 3500.0, 'monthlyChange': 0.0, 'yearlyChange': -245.0}, 'url': 'https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404'}, 'similarFloorplans': {'boundingBox': {'maxLat': 34.039589091997, 'maxLon': -118.46092029261, 'minLat': 34.0271706, 'minLon': -118.47602003283}, 'floorplans': [{'active': True, 'address': {'street': '1335 Franklin St'}, 'aliasEncoded': '6be3bkea23cn', 'amenities': {'hvac': {'airConditioning': False, 'heating': False}, 'laundry': {'inUnit': False, 'shared': True}, 'parking': {'g..., remember to call Finish tool when either if you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+    "tool_call_id": "call_d891ca3fdc8c4d378f42b72180a35e24"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_6201581386ec4ea0839dd050810a2eb6",
+        "function": {
+          "arguments": "{\"address\":\"1545 Yale St, Santa Monica, CA 90404\"}",
+          "name": "rent_zestimate_and_comparable_properties_for_zillow_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "name": "rent_zestimate_and_comparable_properties_for_zillow_v2",
+    "content": "The tool output is {\"error\": \"\", \"response\": \"{'data': {'floorplans': [{'address': {'city': 'Santa Monica', 'state': 'CA', 'street': '1545 Yale St  ', 'zip': '90404'}, 'numBeds': 2, 'numFullBaths': 1.5, 'zestimate': {'rentZestimate': 3625.0, 'rentZestimateRangeHigh': 3951.0, 'rentZestimateRangeLow': 3299.0}, 'zpid': 2110846380}], 'geo': {'lat': 34.03319, 'lon': -118.4685}, 'marketSummary': {'areaName': '90404', 'beds': '2', 'summary': {'availableRentals': 53, 'medianRent': 3500.0, 'monthlyChange': 0.0, 'yearlyChange': -245.0}, 'url': 'https://www.zillow.com/rental-manager/market-trends/90404?bedrooms=2&address=1545+Yale+St++%2C+Santa+Monica%2C+CA+90404'}, 'similarFloorplans': {'boundingBox': {'maxLat': 34.039589091997, 'maxLon': -118.46092029261, 'minLat': 34.0271706, 'minLon': -118.47602003283}, 'floorplans': [{'active': True, 'address': {'street': '1335 Franklin St'}, 'aliasEncoded': '6be3bkea23cn', 'amenities': {'hvac': {'airConditioning': False, 'heating': False}, 'laundry': {'inUnit': False, 'shared': True}, 'parking': {'g..., remember to call Finish tool when either if you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+    "tool_call_id": "call_6201581386ec4ea0839dd050810a2eb6"
+  },
+  {
+    "content": "Question:  The API response is truncated.  To get photos and complete details on comparable properties, I need the full API response. Please provide the complete output.  Also, I need the `zpid` for each comparable property to access its photos.  The current response only provides the `zpid` for 1545 Yale St.\n",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "I could not provide relevant information for this question."
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_f3cf6abfce7f4d7ebb0dd455d2510f7e",
+        "function": {
+          "arguments": "{\"return_type\":\"give_up_and_restart\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"chose to give up and restart\"}",
+    "tool_call_id": "call_f3cf6abfce7f4d7ebb0dd455d2510f7e"
+  }
+]

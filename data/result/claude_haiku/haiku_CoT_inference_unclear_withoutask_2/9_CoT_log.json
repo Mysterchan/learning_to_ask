@@ -1,0 +1,102 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs and their estimated salaries\nBegin!\n"
+  },
+  {
+    "content": "I'll help you find job opportunities and salary insights for a fresh graduate in New York. I'll start by searching for entry-level jobs in a few promising fields for new graduates.\n\nThought: I'll search for some typical entry-level positions that are often good for recent graduates in New York, and then check their estimated salaries.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_019vhHih5jzijs1o1LCjrg7P",
+        "type": "function",
+        "function": {
+          "arguments": "{\"query\": \"entry-level jobs for recent graduates in New York\", \"location\": \"New York, NY\", \"employment_types\": \"[\\\"FULLTIME\\\"]\", \"job_requirements\": \"[\\\"no_experience\\\"]\"}",
+          "name": "search_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"Function executing from toolenv.tools.Data.jsearch.api import search error...\\ninvalid syntax. Perhaps you forgot a comma? (<string>, line 1)\", \"response\": \"\"}",
+    "tool_call_id": "toolu_019vhHih5jzijs1o1LCjrg7P"
+  },
+  {
+    "content": "I apologize for the error. I'll try a more specific search for a few common entry-level positions.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01VncfwrsbKn8dKoHauJ9nMB",
+        "type": "function",
+        "function": {
+          "arguments": "{\"query\": \"Entry-level Business Analyst in New York\", \"location\": \"New York, NY\"}",
+          "name": "search_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"Function executing from toolenv.tools.Data.jsearch.api import search error...\\nsearch() got an unexpected keyword argument 'location'\", \"response\": \"\"}",
+    "tool_call_id": "toolu_01VncfwrsbKn8dKoHauJ9nMB"
+  },
+  {
+    "content": "I'll modify my approach and check estimated salaries for some typical entry-level positions:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01Po3q5X3JFo78Gbt59yvSiA",
+        "type": "function",
+        "function": {
+          "arguments": "{\"job_title\": \"Entry-level Business Analyst\", \"location\": \"New York, NY, USA\"}",
+          "name": "estimated_salary_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '167c83dd-48d6-4e56-857c-e5b67efd07a8', 'parameters': {'job_title': 'entry-level business analyst', 'location': 'new york, ny, usa', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York State', 'job_title': 'Business Analyst Entry Level', 'min_salary': 96587.28, 'max_salary': 162690.54, 'median_salary': 124500.53, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Business%20Analyst%20Entry%20Level&locT=S&locId=428', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "toolu_01Po3q5X3JFo78Gbt59yvSiA"
+  },
+  {
+    "content": "I'll check a few more roles:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_015c3i8QHAuCE3JxDFDzSBXK",
+        "type": "function",
+        "function": {
+          "arguments": "{\"job_title\": \"Entry-level Software Developer\", \"location\": \"New York, NY, USA\"}",
+          "name": "estimated_salary_for_jsearch"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'a29fae6d-3da5-4f7a-8102-656db6593e55', 'parameters': {'job_title': 'entry-level software developer', 'location': 'new york, ny, usa', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York State', 'job_title': 'Entry Level Software Developer', 'min_salary': 89362.07, 'max_salary': 127555.58, 'median_salary': 106356.17, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Entry%20Level%20Software%20Developer&locT=S&locId=428', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "toolu_015c3i8QHAuCE3JxDFDzSBXK"
+  }
+]

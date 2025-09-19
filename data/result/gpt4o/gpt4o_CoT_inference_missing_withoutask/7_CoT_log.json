@@ -1,0 +1,79 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate and looking for jobs in New York. Can you help me to look for the job salary in new york?\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_2f5tExVD7XuvP5IJGA9Cxw3G",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"graduate\",\"radius\":200}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '63572cf3-abb4-46f0-8d1c-0b41d4c7ea16', 'parameters': {'job_title': 'graduate', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': []}\"}",
+    "tool_call_id": "call_2f5tExVD7XuvP5IJGA9Cxw3G"
+  },
+  {
+    "content": "It seems that no specific salary estimations are readily available for jobs titled \"graduate\" in New York. Let me retry with a broader scope or more focused roles frequently held by graduates.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_cIJc3dz7XlZunxW39u5QlrLR",
+        "function": {
+          "arguments": "{\"location\":\"New York\",\"job_title\":\"entry level\",\"radius\":200}",
+          "name": "estimated_salary_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "estimated_salary_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': '99bf3e36-fc42-4d07-a5da-23df860ff2eb', 'parameters': {'job_title': 'entry level', 'location': 'new york', 'location_type': 'ANY', 'years_of_experience': None}, 'data': [{'location': 'New York City, NY', 'job_title': 'Entry Level Marketing', 'min_salary': 74313.5, 'max_salary': 133880.17, 'median_salary': 99084.67, 'salary_period': 'YEAR', 'salary_currency': 'USD', 'publisher_name': 'Glassdoor', 'publisher_link': 'https://www.glassdoor.com/Salaries/company-salaries.htm?suggestCount=0&suggestChosen=false&sc.keyword=Entry%20Level%20Marketing&locT=C&locId=1132348', 'confidence': 'CONFIDENT'}]}\"}",
+    "tool_call_id": "call_cIJc3dz7XlZunxW39u5QlrLR"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_1wUVbci49ibDZbu0q09ESV8g",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"The estimated salary for entry-level positions in New York City varies depending on the role. For instance, for an entry-level marketing position, the annual salaries range from $74,313.50 to $133,880.17, with a median of $99,084.67. All amounts are given in USD. This data is derived from Glassdoor.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_1wUVbci49ibDZbu0q09ESV8g"
+  }
+]

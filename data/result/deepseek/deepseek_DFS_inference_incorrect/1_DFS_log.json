@@ -1,0 +1,78 @@
+[
+  {
+    "role": "user",
+    "content": "\nI have a package with the tracking number .YT9999999999 Can you track this package and give me the tracking information? Additionally, detect the carrier for this tracking number.\nBegin!\n"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_2c85dee8-2731-4fcd-b9f3-b7e9e2fa51cc",
+        "function": {
+          "arguments": "{\"trackingnumber\": \"YT9999999999\"}",
+          "name": "carriers_detect_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "carriers_detect_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'meta': {'code': 200, 'type': 'Success', 'message': 'Success'}, 'data': [{'name': 'Aramex Australia', 'code': 'fastway-au'}, {'name': 'Fastway Ireland', 'code': 'fastway-ie'}]}\"}",
+    "tool_call_id": "call_0_2c85dee8-2731-4fcd-b9f3-b7e9e2fa51cc"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_3d5bbd81-c868-4328-bc6f-ee298ef414f4",
+        "function": {
+          "arguments": "{\"trackingnumber\": \"YT9999999999\"}",
+          "name": "packages_v2_track_for_trackingmore_v2"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "packages_v2_track_for_trackingmore_v2",
+    "content": "{\"error\": \"\", \"response\": \"{}\"}",
+    "tool_call_id": "call_0_3d5bbd81-c868-4328-bc6f-ee298ef414f4"
+  },
+  {
+    "content": "",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_0_589cf210-6383-48fb-b3bd-d219b048d110",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"The tracking number YT9999999999 is associated with carriers: Aramex Australia (fastway-au) and Fastway Ireland (fastway-ie). However, no tracking information was found for this tracking number.\"}",
+          "name": "Finish"
+        },
+        "type": "function",
+        "index": 0
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_0_589cf210-6383-48fb-b3bd-d219b048d110"
+  }
+]

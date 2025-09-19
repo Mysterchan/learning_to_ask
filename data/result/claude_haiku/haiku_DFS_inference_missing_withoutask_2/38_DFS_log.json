@@ -1,0 +1,98 @@
+[
+  {
+    "role": "user",
+    "content": "\nI am moving to Lisbon, Portugal and I am looking for a rental property. Can you provide me with a list of available properties for rent?\nBegin!\n"
+  },
+  {
+    "content": "I'll help you find rental properties in Lisbon, Portugal. I'll break this down into steps:\n\n1. First, I'll use the auto-complete function to get the correct location ID for Lisbon.",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01XbpcknfvMowZbtugsupjoW",
+        "type": "function",
+        "function": {
+          "arguments": "{\"prefix\": \"Lisbon\", \"country\": \"pt\"}",
+          "name": "auto_complete_for_idealista_v2"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "auto_complete_for_idealista_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'locations': [{'name': 'Lisboa, Lisboa', 'locationId': '0-EU-PT-11-06', 'divisible': True, 'type': 'location', 'suggestedLocationId': 39885, 'subTypeText': 'Concelho'}, {'name': 'Lisboa', 'locationId': '0-EU-PT-11', 'divisible': True, 'type': 'location', 'suggestedLocationId': 37369, 'subTypeText': 'Distrito'}, {'name': 'Metro Saldanha, Lisboa', 'divisible': False, 'type': 'zoi', 'subType': 'metroLisboa', 'suggestedLocationId': 141707, 'zoiId': 'metro-saldanha', 'subTypeText': 'Metro de Lisboa', 'icon': 'https://st1.idealista.com/api/resources/img/pois/metroLisboa.png'}, {'name': 'Urbaniza\\u00e7\\u00e3o Alfornelos, Lisboa', 'divisible': False, 'type': 'zoi', 'subType': 'unknown', 'suggestedLocationId': 144034, 'zoiId': 'urbanizacao-alfornelos', 'subTypeText': 'Urbaniza\\u00e7\\u00e3o'}, {'name': 'Alameda, Lisboa', 'divisible': False, 'type': 'zoi', 'subType': 'unknown', 'suggestedLocationId': 143988, 'zoiId': 'alameda', 'subTypeText': 'Urbaniza\\u00e7\\u00e3o'}, {'name': 'Olaias, Lisboa...",
+    "tool_call_id": "toolu_01XbpcknfvMowZbtugsupjoW"
+  },
+  {
+    "content": "Great! I'll use the first location ID for Lisboa (Lisbon) to search for rental properties.\n\n2. Now, I'll search for rental properties in Lisbon:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_01BQiyTQuhwBApLr6LXimbd4",
+        "type": "function",
+        "function": {
+          "arguments": "{\"operation\": \"rent\", \"country\": \"pt\", \"locationid\": \"0-EU-PT-11-06\", \"locationname\": \"Lisboa, Lisboa\", \"maxitems\": 20}",
+          "name": "properties_list_for_idealista_v2"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "properties_list_for_idealista_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'elementList': [{'propertyCode': '33960506', 'thumbnail': 'https://img4.idealista.pt/blur/WEB_LISTING-M/0/id.pro.pt.image.master/1e/75/fc/274085524.webp', 'externalReference': '655306', 'numPhotos': 57, 'price': 320.0, 'priceInfo': {'price': {'amount': 320.0, 'currencySuffix': '\\u20ac/month'}}, 'propertyType': 'flat', 'operation': 'rent', 'size': 200.0, 'rooms': 9, 'bathrooms': 3, 'address': 'avenida Praia da Vit\\u00f3ria', 'province': 'Lisboa', 'municipality': 'Avenidas Novas', 'district': 'S\\u00e3o Sebasti\\u00e3o da Pedreira', 'country': 'pt', 'locationId': '0-EU-PT-11-06-057-57-04', 'latitude': 38.734909, 'longitude': -9.1474244, 'showAddress': False, 'url': 'https://www.idealista.pt/imovel/33960506/', 'description': 'RESERVATIONS AND INFORMATION REQUESTS To obtain detailed information and book online, click on \\\"Additional Link\\\" below the map. ACCOMMODATION TERMS AND CONDITIONS: - Availability Date: AVAILABLE NOW - Minimum Rental Duration: 27 days - Maximum Number of Guests: 1...",
+    "tool_call_id": "toolu_01BQiyTQuhwBApLr6LXimbd4"
+  },
+  {
+    "content": "3. I'll get more details about one of the properties:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_016hWpFD95tzpryUGVeadjjR",
+        "type": "function",
+        "function": {
+          "arguments": "{\"propertycode\": 33960506, \"country\": \"pt\", \"language\": \"en\"}",
+          "name": "properties_detail_for_idealista_v2"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "properties_detail_for_idealista_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'adid': 33960506, 'price': 320.0, 'priceInfo': {'amount': 320.0, 'currencySuffix': '\\u20ac/month', 'description': None}, 'operation': 'rent', 'propertyType': 'homes', 'extendedPropertyType': 'flat', 'homeType': 'flat', 'state': 'active', 'multimedia': {'images': [{'url': 'https://img4.idealista.pt/blur/WEB_DETAIL-XL-L/0/id.pro.pt.image.master/1e/75/fc/274085524.webp', 'tag': 'bedroom', 'localizedName': 'bedroom', 'multimediaId': 274085524, 'deeplinkUrl': 'https://www.idealista.pt/en/imovel/33960506/foto/1/', 'madeByIdealista': False}, {'url': 'https://img4.idealista.pt/blur/WEB_DETAIL-XL-L/0/id.pro.pt.image.master/93/98/64/274085555.webp', 'tag': 'kitchen', 'localizedName': 'Kitchen', 'multimediaId': 274085555, 'deeplinkUrl': 'https://www.idealista.pt/en/imovel/33960506/foto/2/', 'madeByIdealista': False}, {'url': 'https://img4.idealista.pt/blur/WEB_DETAIL-XL-L/0/id.pro.pt.image.master/20/ca/7a/274085556.webp', 'tag': 'kitchen', 'localizedName': 'Kitchen', 'multimediaId': 274085556...",
+    "tool_call_id": "toolu_016hWpFD95tzpryUGVeadjjR"
+  },
+  {
+    "content": "Now, I'll summarize the findings:",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "toolu_011RAXNV4qeCoN9JKWQHbMK5",
+        "type": "function",
+        "function": {
+          "arguments": "{\"return_type\": \"give_answer\", \"final_answer\": \"I found several rental properties in Lisbon. Here's a sample property to give you an idea:\\n\\n- Location: Avenidas Novas, Lisbon\\n- Price: \\u20ac320 per month\\n- Property Type: Flat\\n- Size: 200 m\\u00b2\\n- Rooms: 9\\n- Bathrooms: 3\\n- Address: Avenida Praia da Vit\\u00f3ria\\n\\nKey Details:\\n- Currently available\\n- Minimum rental duration: 27 days\\n- Located in the Lisbon district\\n\\nThe property is listed on Idealista.pt with 57 photos available. You can find more details and contact information at: https://www.idealista.pt/imovel/33960506/\\n\\nI recommend using the Idealista website to browse more properties, filter by your specific preferences, and contact property owners directly. The rental market in Lisbon offers various options to suit different needs and budgets.\"}",
+          "name": "Finish"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "toolu_011RAXNV4qeCoN9JKWQHbMK5"
+  }
+]

@@ -1,0 +1,145 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.youtube_v3_v2: Get youtube data without any youtube data api key\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI'm planning a family movie night and I need to create a playlist of animated movies on YouTube. Can you fetch the videos from a playlist with the ID 'ASLpZt3vCjQVX'? It would be helpful to have the details and comments for each video.\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_Q4pn2BaQsAlRf9HLcYQNWFtW",
+        "function": {
+          "arguments": "{\n\"part\": \"snippet,contentDetails\",\n\"playlistid\": \"ASLpZt3vCjQVX\",\n\"maxresults\": \"5\"\n}",
+          "name": "playlist_videos_for_youtube_v3_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "playlist_videos_for_youtube_v3_v2",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'error': {'code': 404, 'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'errors': [{'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'domain': 'youtube.playlistItem', 'reason': 'playlistNotFound', 'location': 'playlistId', 'locationType': 'parameter'}]}}\"}",
+    "tool_call_id": "call_Q4pn2BaQsAlRf9HLcYQNWFtW"
+  },
+  {
+    "content": "Question: I apologize, but it seems that the playlist with the ID 'ASLpZt3vCjQVX' cannot be found. Can you please double-check the playlist ID and provide the correct one?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is RDZiQo7nAkQHU"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_SPq8hVBEGwVX9HECCD7kpXlt",
+        "function": {
+          "arguments": "{\"part\": \"snippet,contentDetails\", \"playlistid\": \"RDZiQo7nAkQHU\", \"maxresults\": \"5\"}",
+          "name": "playlist_videos_for_youtube_v3_v2"
+        },
+        "type": "function"
+      },
+      {
+        "id": "call_0AzCltCgEmtzKA6NmZqtv4J5",
+        "function": {
+          "arguments": "{\"part\": \"snippet\", \"videoid\": \"VIDEO_ID\", \"maxresults\": 3}",
+          "name": "video_comments_for_youtube_v3_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "playlist_videos_for_youtube_v3_v2",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'error': {'code': 404, 'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'errors': [{'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'domain': 'youtube.playlistItem', 'reason': 'playlistNotFound', 'location': 'playlistId', 'locationType': 'parameter'}]}}\"}",
+    "tool_call_id": "call_SPq8hVBEGwVX9HECCD7kpXlt"
+  },
+  {
+    "role": "tool",
+    "name": "video_comments_for_youtube_v3_v2",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'error': {'message': 'Server error, please try again. Quota cost is 0.', 'code': 403}}\"}",
+    "tool_call_id": "call_0AzCltCgEmtzKA6NmZqtv4J5"
+  },
+  {
+    "content": "Question: I apologize for the inconvenience, but it seems that there is an issue retrieving the videos from the playlist with the ID 'RDZiQo7nAkQHU'. Are you sure the playlist ID is correct?",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": null
+  },
+  {
+    "role": "user",
+    "content": "The correct one is RDZiQo7nAkQHU"
+  },
+  {
+    "content": "hello",
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_6SgsLcmObn5d75Glg69rQYO6",
+        "function": {
+          "arguments": "{\"is_id\": \"RDZiQo7nAkQHU\", \"part\": \"snippet\"}",
+          "name": "playlist_details_for_youtube_v3_v2"
+        },
+        "type": "function"
+      },
+      {
+        "id": "call_DHvWnQZXg6G0AJLRjtLqc6Qb",
+        "function": {
+          "arguments": "{\"part\": \"snippet,contentDetails\", \"playlistid\": \"RDZiQo7nAkQHU\", \"maxresults\": \"5\"}",
+          "name": "playlist_videos_for_youtube_v3_v2"
+        },
+        "type": "function"
+      },
+      {
+        "id": "call_YlupTDc3ug2NflxNM5WnUgrH",
+        "function": {
+          "arguments": "{\"part\": \"snippet\", \"videoid\": \"VIDEO_ID\", \"maxresults\": 3}",
+          "name": "video_comments_for_youtube_v3_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "playlist_details_for_youtube_v3_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'kind': 'youtube#playlistListResponse', 'pageInfo': {'totalResults': 1, 'resultsPerPage': 5}, 'items': [{'kind': 'youtube#playlist', 'id': 'RDZiQo7nAkQHU', 'snippet': {'publishedAt': '1970-01-01T00:00:00Z', 'channelId': 'UCBR8-60-B28hp2BmDPdntcQ', 'title': 'Mix - Otilia - Adelante (official video) Shakira similar voice', 'description': '', 'thumbnails': {'default': {'url': 'https://i.ytimg.com/vi/ZiQo7nAkQHU/default.jpg', 'width': 120, 'height': 90}, 'medium': {'url': 'https://i.ytimg.com/vi/ZiQo7nAkQHU/mqdefault.jpg', 'width': 320, 'height': 180}, 'high': {'url': 'https://i.ytimg.com/vi/ZiQo7nAkQHU/hqdefault.jpg', 'width': 480, 'height': 360}, 'standard': {'url': 'https://i.ytimg.com/vi/ZiQo7nAkQHU/sddefault.jpg', 'width': 640, 'height': 480}, 'maxres': {'url': 'https://i.ytimg.com/vi/ZiQo7nAkQHU/maxresdefault.jpg', 'width': 1280, 'height': 720}}, 'channelTitle': 'YouTube', 'defaultLanguage': 'en', 'localized': {'title': 'Mix - Otilia - Adelante (official video) Shakira similar vo...",
+    "tool_call_id": "call_6SgsLcmObn5d75Glg69rQYO6"
+  },
+  {
+    "role": "tool",
+    "name": "playlist_videos_for_youtube_v3_v2",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'error': {'code': 404, 'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'errors': [{'message': \\\"The playlist identified with the request's <code>playlistId</code> parameter cannot be found.\\\", 'domain': 'youtube.playlistItem', 'reason': 'playlistNotFound', 'location': 'playlistId', 'locationType': 'parameter'}]}}\"}",
+    "tool_call_id": "call_DHvWnQZXg6G0AJLRjtLqc6Qb"
+  },
+  {
+    "role": "tool",
+    "name": "video_comments_for_youtube_v3_v2",
+    "content": "{\"error\": \"Message error...\", \"response\": \"{'error': {'message': 'Server error, please try again. Quota cost is 0.', 'code': 403}}\"}",
+    "tool_call_id": "call_YlupTDc3ug2NflxNM5WnUgrH"
+  }
+]

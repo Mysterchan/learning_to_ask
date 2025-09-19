@@ -1,0 +1,56 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.jsearch: Fast and Simple searches for jobs posted on LinkedIn, Indeed, Glassdoor, ZipRecruiter, Dice and others, all in a single API.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI am a university fresh graduate, and I am looking for some opportunities in New York. Could you provide insights into some professional jobs in London?\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_2f5tExVD7XuvP5IJGA9Cxw3G",
+        "function": {
+          "arguments": "{\"query\":\"professional jobs in London\",\"country\":\"uk\",\"num_pages\":\"1\"}",
+          "name": "search_for_jsearch"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_jsearch",
+    "content": "{\"error\": \"\", \"response\": \"{'status': 'OK', 'request_id': 'd49f0e05-62d6-41f0-ac6c-6ebd58097306', 'parameters': {'query': 'professional jobs in london', 'page': 1, 'num_pages': 1, 'country': 'uk', 'language': 'en'}, 'data': [{'job_id': 'LM4pEA1S2p8BzMevAAAAAA==', 'employer_name': 'Bloomsbury Publishing plc', 'employer_logo': None, 'employer_website': 'http://www.bloomsbury.com/', 'employer_company_type': None, 'employer_linkedin': None, 'job_publisher': 'The Bookseller Jobs', 'job_employment_type': 'FULLTIME', 'job_employment_types': ['FULLTIME'], 'job_employment_type_text': 'Full\\u2013time', 'job_title': 'Designer, Academic & Professional Production', 'job_apply_link': 'https://jobs.thebookseller.com/career/27492/designer-academic-professional-production-london?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic', 'job_apply_is_direct': False, 'job_apply_quality_score': None, 'apply_options': [{'publisher': 'The Bookseller Jobs', 'apply_link': 'https://jobs.thebookseller.com/career...",
+    "tool_call_id": "call_2f5tExVD7XuvP5IJGA9Cxw3G"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_H5uJZiSFYhslUpYQi0XdvLCp",
+        "function": {
+          "arguments": "{\"return_type\":\"give_answer\",\"final_answer\":\"I found a professional job opportunity in London from Bloomsbury Publishing plc:\\n\\n**Job Title:** Designer, Academic & Professional Production\\n**Employment Type:** Full-time\\n**Employer Website:** [www.bloomsbury.com](http://www.bloomsbury.com/)\\n**Apply Here:** [Click to Apply](https://jobs.thebookseller.com/career/27492/designer-academic-professional-production-london?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic)\\n\\nWould you like further assistance in searching for other roles or getting specific details?\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"successfully giving the final answer.\"}",
+    "tool_call_id": "call_H5uJZiSFYhslUpYQi0XdvLCp"
+  }
+]

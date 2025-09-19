@@ -1,0 +1,79 @@
+[
+  {
+    "role": "system",
+    "content": "You are AutoGPT, you can use many tools(functions) to do the following task.\nFirst I will give you the task description, and your task start.\nAt each step, you need to give your thought to analyze the status now and what to do next, with a function call to actually excute your step.\nAfter the call, you will get the call result, and you are now in a new state.\nThen you will analyze your status now, then decide what to do next...\nAfter many (Thought-call) pairs, you finally perform the task, then you can give your finial answer.\nRemember: \n1.the state change is irreversible, you can't go back to one of the former state, if you want to restart the task, say \"I give up and restart\".\n2.All the thought is short, at most in 5 sentence.\n3.You can do more then one trys, so if your plan is to continusly try some conditions, you can do one of the conditions per try.\nLet's Begin!\nTask description: You should use functions to help handle the real time user querys. Remember:\n1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.\n2.Do not use origin tool names, use only subfunctions' names.\nYou have access of the following tools:\n1.netflix_v2: Netflix data API provides details, stats and information of TV shows, movies, series, documentaries and more.\n"
+  },
+  {
+    "role": "user",
+    "content": "\nI want to know the director of the movie 'The Matrix'\nBegin!\n"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_sq4yneqBXE7dHAIGVEaxbEO9",
+        "function": {
+          "arguments": "{\"query\":\"The Matrix\",\"limit_titles\":1}",
+          "name": "search_for_netflix_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "search_for_netflix_v2",
+    "content": "{\"error\": \"\", \"response\": \"{'titles': [{'availability': {'isPlayable': True, 'availabilityDate': 'August 12', 'availabilityStartTime': 1660287600000, 'unplayableCause': None}, 'inRemindMeList': False, 'queue': {'available': True, 'inQueue': False}, 'summary': {'type': 'movie', 'unifiedEntityId': 'Video:81186049', 'id': 81186049, 'isOriginal': True, 'liveEvent': {'hasLiveEvent': False}}, 'jawSummary': {'trackIds': {'videoId': 81186049, 'trackId_jaw': 14277281, 'trackId_jawEpisode': 14277283, 'trackId_jawTrailer': 14277282, 'trackId': 14277281}, 'tags': [{'id': 100041, 'name': 'Exciting'}], 'cast': [{'id': 31453, 'name': 'Jamie Foxx'}, {'id': 30119480, 'name': 'Dave Franco'}, {'id': 40011328, 'name': 'Natasha Liu Bordizzo'}, {'id': 20028265, 'name': 'Meagan Good'}, {'id': 30142238, 'name': 'Karla Souza'}, {'id': 30011693, 'name': 'Steve Howey'}, {'id': 20038880, 'name': 'Scott Adkins'}, {'id': 40063241, 'name': 'Oliver Masucci'}, {'id': 20001078, 'name': 'Snoop Dogg'}, {'id': 30068901, 'name': 'Eric Lange'}, {'...",
+    "tool_call_id": "call_sq4yneqBXE7dHAIGVEaxbEO9"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_D9jiGlW03fd8o8xlSiydtAPW",
+        "function": {
+          "arguments": "{\"ids\":\"81186049\"}",
+          "name": "title_details_for_netflix_v2"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "title_details_for_netflix_v2",
+    "content": "{\"error\": \"\", \"response\": \"[{'titleId': '81186049', 'details': {'trackIds': {'videoId': 81186049, 'trackId_jaw': 14277281, 'trackId_jawEpisode': 14277283, 'trackId_jawTrailer': 14277282, 'trackId': 14277281}, 'tags': [{'id': 100041, 'name': 'Exciting'}], 'cast': [{'id': 31453, 'name': 'Jamie Foxx'}, {'id': 30119480, 'name': 'Dave Franco'}, {'id': 40011328, 'name': 'Natasha Liu Bordizzo'}, {'id': 20028265, 'name': 'Meagan Good'}, {'id': 30142238, 'name': 'Karla Souza'}, {'id': 30011693, 'name': 'Steve Howey'}, {'id': 20038880, 'name': 'Scott Adkins'}, {'id': 40063241, 'name': 'Oliver Masucci'}, {'id': 20001078, 'name': 'Snoop Dogg'}, {'id': 30068901, 'name': 'Eric Lange'}, {'id': 89457, 'name': 'Peter Stormare'}, {'id': 60556420, 'name': 'Zion Broadnax'}], 'creators': [], 'directors': [{'id': 40215347, 'name': 'JJ Perry'}], 'writers': [{'id': 60052263, 'name': 'Tyler Tice'}, {'id': 40144730, 'name': 'Shay Hatten'}], 'genres': [{'id': 75804, 'name': 'Vampire Horror Movies'}, {'id': 6548, 'name': 'Comedy Movies'...",
+    "tool_call_id": "call_D9jiGlW03fd8o8xlSiydtAPW"
+  },
+  {
+    "content": null,
+    "refusal": null,
+    "role": "assistant",
+    "audio": null,
+    "function_call": null,
+    "tool_calls": [
+      {
+        "id": "call_bXJOhGEHak0UhZjRQB5w0e8G",
+        "function": {
+          "arguments": "{\"return_type\":\"give_up_and_restart\",\"final_answer\":\"I mistakenly searched for the wrong version of the title 'The Matrix.' Instead a different movie was fetched mixed up its connections.\"}",
+          "name": "Finish"
+        },
+        "type": "function"
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "name": "Finish",
+    "content": "{\"response\":\"chose to give up and restart\"}",
+    "tool_call_id": "call_bXJOhGEHak0UhZjRQB5w0e8G"
+  }
+]
