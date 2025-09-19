@@ -12,8 +12,7 @@ import csv
 import tqdm
 import time
 
-from toolbench.inference.LLM.new_chatgpt_funtion_model import ChatGPTChatFunction
-from toolbench.inference.LLM.deepseek_new import DeepseekChatFunction
+from toolbench.inference.LLM.LLM_funtion_model import SimpleLLMChatFunction
 
 class OutOfQuotaException(Exception):
     "Raised when the key exceeded the current quota"
