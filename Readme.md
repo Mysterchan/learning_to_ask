@@ -6,7 +6,7 @@
 
 <div>
   <p align="center" style="font-size: larger;">
-    <strong>EMNLP 2025 Oral Presentation Paper</strong>
+    <strong>EMNLP 2025 Poster </strong>
   </p>
 </div>
 
