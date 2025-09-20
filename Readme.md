@@ -193,7 +193,7 @@ The `data/result/` folder contains example per-model evaluations and CSV summari
 
 These artifacts can be used to analyze how clarification behaviors impact success and error modes across backbones and search strategies.
 
-
+We provide an evaluation script `\src\toolbench\tooleval\auto_evaluator.py`. This will generate a csv file containing entried similar to those CSV summaries. Since the evaluation incorporates LLMs, you may want to modify the backbone model and use it with your API key. By default we support invoking LLMs using the openai format.
 
 ## Citation
 
