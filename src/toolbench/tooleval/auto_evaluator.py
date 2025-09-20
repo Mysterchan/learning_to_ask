@@ -53,6 +53,7 @@ def parse_args():
     parser.add_argument("-ori", "--original", type=bool, default=False)
     parser.add_argument("-key", "--key", type=str, required=True)
     parser.add_argument("-model", "--model_selection", type=str, default="GPT4")
+    parser.add_argument("-base_url", "--base_url", type=str, default="")
     
     return parser.parse_args()
 
@@ -115,7 +116,7 @@ the expected tool calls. Then, you should compare them to give the result)
 """
 
 class AutoEvaluator:
-    def __init__(self, data, result_foler, original, AI_model, key) -> None:
+    def __init__(self, data, result_foler, original, AI_model, key, base_url) -> None:
         '''
         data: unclear/ incorrect/ ... file
         result_foler: the folder containing the log.json files
@@ -129,13 +130,17 @@ class AutoEvaluator:
         self.count = 0
         self.original = original
         if AI_model == "ChatGPT":
-            self.AI_model = ChatGPTChatFunction('gpt-3.5-turbo', key)
+            self.AI_model = SimpleLLMChatFunction('gpt-3.5-turbo', key, base_url_=base_url)
         elif AI_model == "deepseek":
-            self.AI_model = DeepseekChatFunction('deepseek-chat', key)
+            self.AI_model = SimpleLLMChatFunction('deepseek-chat', key, base_url_=base_url)
         elif AI_model == "gpt4o":
-            self.AI_model = ChatGPTChatFunction('gpt-4o-2024-11-20', key)
+            self.AI_model = SimpleLLMChatFunction('gpt-4o-2024-11-20', key, base_url_=base_url)
         else:
-            self.AI_model = ChatGPTChatFunction('gpt-4-turbo-2024-04-09', key)
+            try:
+                self.AI_model = SimpleLLMChatFunction(AI_model, key, base_url_=base_url)
+            except:
+                print(f"[ERROR] Model {AI_model} is not supported for {base_url}")
+                exit(1)
 
     def load_expected_api_call(self):
         with open(self.data, 'r', encoding="utf-8") as file:
@@ -426,7 +431,7 @@ class AutoEvaluator:
 
 if __name__ == "__main__":
     args = parse_args()
-    evaluator = AutoEvaluator(args.data_path, args.result_folder, args.original, args.model_selection, args.key)
+    evaluator = AutoEvaluator(args.data_path, args.result_folder, args.original, args.model_selection, args.key, args.base_url)
     evaluator.load_expected_api_call()
     evaluator.evaluate_question_asking()
     # evaluator.evaluate_api_call_per_result(args.csv_statistics_file)
