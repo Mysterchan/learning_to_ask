@@ -195,6 +195,10 @@ These artifacts can be used to analyze how clarification behaviors impact succes
 
 We provide an evaluation script `\src\toolbench\tooleval\auto_evaluator.py`. This will generate a csv file containing entried similar to those CSV summaries. Since the evaluation incorporates LLMs, you may want to modify the backbone model and use it with your API key. By default we support invoking LLMs using the openai format.
 
+## License
+
+This project is released under the Apache 2.0 License.
+
 ## Citation
 
 If you use this artifact, please cite the corresponding paper.
